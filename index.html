@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Jitendra Kumar Saini — AI/ML Engineer</title>
 <meta name="description" content="AI/ML Engineer & Python Developer. LLM Orchestration, Agentic Systems, Computer Vision. B.Tech AI & Data Science 2026, Jaipur."/>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230B0B0B'/%3E%3Ctext x='50' y='50' font-family='JetBrains Mono,monospace' font-size='42' font-weight='700' fill='%23F8F8F8' text-anchor='middle' dominant-baseline='central'%3EJS%3C/text%3E%3C/svg%3E"/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23000000'/%3E%3Cpath d='M16,7 L16,14 L23,10 L16,18 L23,22 L16,26 Q10,26 9,21' stroke='%23F8F8F8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='23' cy='10' r='2' fill='%23F8F8F8'/%3E%3Ccircle cx='23' cy='22' r='2' fill='%23F8F8F8'/%3E%3C/svg%3E"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
@@ -65,8 +65,31 @@ nav{
 .nav-brand{
   font-size:0.8rem;font-weight:500;letter-spacing:0.12em;
   text-transform:uppercase;color:var(--white-dim);
+  display:flex;align-items:center;gap:11px;
 }
 .nav-brand span{color:var(--white);}
+
+/* ── LOGO MARK ──
+   One continuous stroke: J's stem, into an S zigzag, out through J's hook —
+   two letters, one path. Node dots mark the zigzag's outer turns. */
+.nav-logo{
+  flex-shrink:0;cursor:pointer;transform-origin:50% 50%;
+  transition:transform .4s cubic-bezier(.16,1,.3,1), filter .4s ease;
+}
+.nav-logo:hover{
+  transform:scale(1.1) rotate(-4deg);
+  filter:drop-shadow(0 0 8px rgba(248,248,248,0.45));
+}
+/* Draws itself in once on load via pathLength-normalized dash (100 units
+   regardless of actual geometry), independent of the hover transform above. */
+.nav-logo path{
+  stroke-dasharray:100;stroke-dashoffset:100;
+  animation:logo-draw 1.1s cubic-bezier(.65,0,.35,1) .2s forwards;
+}
+@keyframes logo-draw{to{stroke-dashoffset:0;}}
+@media(prefers-reduced-motion:reduce){
+  .nav-logo path{animation:none;stroke-dashoffset:0;}
+}
 .nav-links{display:flex;gap:32px;align-items:center;}
 .nav-links a{
   font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;
@@ -498,7 +521,15 @@ footer{
 
 <!-- ── NAVBAR ── -->
 <nav>
-  <div class="nav-brand"><span>Jitendra</span> Kumar Saini</div>
+  <div class="nav-brand">
+    <svg class="nav-logo" width="30" height="30" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect width="32" height="32" rx="7" fill="#000"/>
+      <path d="M16,7 L16,14 L23,10 L16,18 L23,22 L16,26 Q10,26 9,21" stroke="#F8F8F8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" pathLength="100"/>
+      <circle cx="23" cy="10" r="2" fill="#F8F8F8"/>
+      <circle cx="23" cy="22" r="2" fill="#F8F8F8"/>
+    </svg>
+    <span>Jitendra</span> Kumar Saini
+  </div>
   <div class="nav-links">
     <a href="#architecture">Architecture</a>
     <a href="#projects">Projects</a>
