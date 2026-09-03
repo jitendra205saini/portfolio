@@ -1,1233 +1,826 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Jitendra Kumar Saini — AI/ML Engineer</title>
+<meta name="description" content="AI/ML Engineer & Python Developer. LLM Orchestration, Agentic Systems, Computer Vision. B.Tech AI & Data Science 2026, Jaipur."/>
+<!-- Favicon — same as navbar logo -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23000000' stroke='rgba(255,255,255,0.2)' stroke-width='1'/%3E%3Cpath d='M16,7 L16,14 L23,10 L16,18 L23,22 L16,26 Q10,26 9,21' stroke='%23F8F8F8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='23' cy='10' r='2' fill='%23F8F8F8'/%3E%3Ccircle cx='23' cy='22' r='2' fill='%23F8F8F8'/%3E%3C/svg%3E"/>
+<link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23000000'/%3E%3Cpath d='M16,7 L16,14 L23,10 L16,18 L23,22 L16,26 Q10,26 9,21' stroke='%23F8F8F8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='23' cy='10' r='2' fill='%23F8F8F8'/%3E%3Ccircle cx='23' cy='22' r='2' fill='%23F8F8F8'/%3E%3C/svg%3E"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ══ RESET & VARS ══ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+:root{
+  --bg:#0B0B0B; --bg2:#111111; --bg3:#161616;
+  --border:#2A2A2A; --bl:rgba(255,255,255,0.07);
+  --w:#F8F8F8; --wd:#AAAAAA; --wm:#555555;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--w);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+::selection{background:var(--w);color:var(--bg);}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--border);}
 
-<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;background-color:#0B0B0B;color:#e5e1e4;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}#custom-cursor-dot,#custom-cursor-glow{pointer-events:none;position:fixed;top:0;left:0;z-index:9999;border-radius:9999px;transform:translate(-50%,-50%);transition:opacity 0.2s ease,transform 0.15s ease-out;}#custom-cursor-dot{width:6px;height:6px;background-color:#ffffff;}#custom-cursor-glow{width:36px;height:36px;background:radial-gradient(circle,rgba(255,255,255,0.18) 0%,rgba(255,255,255,0) 70%);mix-blend-mode:screen;pointer-events:none;transition:transform 0.25s ease-out,width 0.2s ease,height 0.2s ease;}
-/* Custom web component polyfill wrapper if not registered */
-threejs-scene { display: block; position: relative; }
+/* ══ CUSTOM CURSOR ══ */
+@media(pointer:fine){body,a,button,[data-color]{cursor:none;}}
+#cur-dot{position:fixed;top:0;left:0;z-index:9999;width:5px;height:5px;border-radius:50%;background:#fff;pointer-events:none;transform:translate(-50%,-50%);will-change:left,top;}
+#cur-ring{position:fixed;top:0;left:0;z-index:9998;width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,0.4);pointer-events:none;transform:translate(-50%,-50%) scale(1);transition:border-color 0.3s,box-shadow 0.3s,transform 0.3s;will-change:left,top;}
+@media(max-width:768px){#cur-dot,#cur-ring{display:none;}}
 
-/* Enhanced Deep AI Engineering Grid & Dot Matrix Texture */
-.bg-tech-matrix {
-  background-color: #0B0B0B;
-  background-image: 
-    radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 32px 32px;
-}
+/* ══ 3D CANVAS ══ */
+#canvas-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.55;}
 
-/* Atmospheric Ambient Vignette & Hero Lighting Glow */
-.ambient-glow-backdrop {
-  background: radial-gradient(circle at 50% -10%, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.015) 45%, transparent 75%);
-}
+/* ══ NAV ══ */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:60px;border-bottom:1px solid var(--bl);background:rgba(11,11,11,0.92);backdrop-filter:blur(24px);}
+.nav-logo-wrap{display:flex;align-items:center;gap:12px;}
+.nav-logo{flex-shrink:0;cursor:pointer;transform-origin:50% 50%;transition:transform .4s cubic-bezier(.16,1,.3,1),filter .4s ease;}
+.nav-logo:hover{transform:scale(1.1) rotate(-4deg);filter:drop-shadow(0 0 10px rgba(248,248,248,0.5));}
+.nav-logo path{stroke-dasharray:100;stroke-dashoffset:100;animation:logo-draw 1.2s cubic-bezier(.65,0,.35,1) .3s forwards;}
+@keyframes logo-draw{to{stroke-dashoffset:0;}}
+.nav-brand-text{display:flex;flex-direction:column;}
+.nav-brand-name{font-size:0.82rem;font-weight:600;letter-spacing:0.04em;color:var(--w);}
+.nav-brand-sub{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--wm);}
+.nav-links{display:flex;gap:32px;align-items:center;}
+.nav-links a{font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--wm);font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--w);}
+.nav-resume{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:var(--bg);background:var(--w);padding:8px 20px;border-radius:2px;transition:all 0.2s;}
+.nav-resume:hover{background:var(--wd);}
+.nav-status{display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,0.05);border:1px solid var(--bl);}
+.nav-status-dot{width:6px;height:6px;border-radius:50%;background:#4ADE80;animation:pulse-dot 2.5s infinite;}
+.nav-status-text{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--wm);}
+.nav-ham{display:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px;}
+.nav-ham span{width:20px;height:1px;background:var(--w);display:block;transition:all 0.3s;}
+.mob-nav{display:none;position:fixed;top:60px;left:0;right:0;z-index:99;background:rgba(11,11,11,0.98);border-bottom:1px solid var(--bl);flex-direction:column;padding:16px 24px;}
+.mob-nav.open{display:flex;}
+.mob-nav a{font-size:0.85rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--wm);padding:12px 0;border-bottom:1px solid var(--border);transition:color 0.2s;}
+.mob-nav a:last-child{border-bottom:none;}
+.mob-nav a:hover{color:var(--w);}
+@keyframes pulse-dot{0%,100%{opacity:1;}50%{opacity:0.3;}}
 
-/* Original Animated Logo Styles */
-.nav-logo {
-  flex-shrink: 0; cursor: pointer; transform-origin: 50% 50%;
-  transition: transform .4s cubic-bezier(.16,1,.3,1), filter .4s ease;
+/* ══ HERO ══ */
+.hero{position:relative;z-index:1;min-height:100dvh;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px 48px 40px;max-width:1400px;margin:0 auto;}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:clamp(0.6rem,1vw,0.68rem);letter-spacing:0.2em;text-transform:uppercase;color:var(--wm);margin-bottom:14px;}
+.hero-headline{font-size:clamp(2.2rem,5.5vw,4.4rem);font-weight:800;line-height:1.06;letter-spacing:-0.03em;color:var(--w);margin-bottom:20px;}
+.hero-sub{font-size:clamp(0.875rem,1.8vw,1.05rem);color:var(--wd);line-height:1.65;max-width:560px;margin-bottom:28px;}
+.hero-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:32px;}
+.btn-w{font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;background:var(--w);color:var(--bg);padding:13px 26px;border-radius:2px;border:1px solid var(--w);transition:all 0.25s;}
+.btn-w:hover{background:transparent;color:var(--w);}
+.btn-g{font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;background:transparent;color:var(--wd);padding:13px 26px;border-radius:2px;border:1px solid #2A2A2A;transition:all 0.3s;}
+.btn-g:hover{border-color:#555;color:var(--w);box-shadow:0 0 20px rgba(255,255,255,0.06);}
+.hero-meta{display:flex;gap:24px;align-items:center;border-top:1px solid var(--bl);padding-top:28px;flex-wrap:wrap;}
+.hero-stat-num{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;}
+.hero-stat-label{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--wm);margin-top:2px;}
+.hero-divider{width:1px;height:32px;background:var(--bl);}
+
+/* ══ SECTION WRAPPER ══ */
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 48px;overflow-x:hidden;}
+.section{padding:96px 0;border-top:1px solid var(--bl);}
+.section-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:56px;flex-wrap:wrap;gap:16px;}
+.section-index{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;color:var(--wm);text-transform:uppercase;margin-bottom:4px;}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:700;letter-spacing:-0.025em;}
+.section-desc{font-size:0.85rem;color:var(--wm);max-width:320px;line-height:1.7;text-align:right;}
+
+/* ══ ARCH GRID ══ */
+.arch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bl);}
+.arch-col{background:var(--bg);padding:36px;}
+.arch-col-head{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--wm);font-family:'JetBrains Mono',monospace;margin-bottom:28px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+.arch-item{display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--border);font-size:0.875rem;color:var(--wd);transition:color 0.2s,box-shadow 0.3s;border-radius:2px;}
+.arch-item:last-child{border-bottom:none;}
+.arch-item:hover{color:var(--w);}
+.arch-tag{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--wm);}
+.arch-footnote{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:36px;padding-top:28px;border-top:1px solid var(--bl);}
+.fn-val{font-size:1.7rem;font-weight:700;letter-spacing:-0.02em;}
+.fn-label{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--wm);margin-top:4px;}
+
+/* ══ ASCII LIVE BLOCK ══ */
+.ascii-block{background:var(--bg2);border:1px solid var(--bl);border-radius:4px;overflow:hidden;margin-top:32px;}
+.ascii-topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--bl);background:rgba(255,255,255,0.02);}
+.ascii-dots{display:flex;gap:6px;}
+.ascii-dot{width:10px;height:10px;border-radius:50%;}
+.ascii-filename{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--wm);margin-left:10px;}
+.ascii-badge{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:#4ADE80;display:flex;align-items:center;gap:6px;}
+.ascii-badge span{width:6px;height:6px;border-radius:50%;background:#4ADE80;animation:pulse-dot 2s infinite;}
+.ascii-body{display:grid;grid-template-columns:1fr 1fr;font-family:'JetBrains Mono',monospace;}
+.ascii-left{padding:20px;border-right:1px solid var(--bl);}
+.ascii-right{padding:20px;}
+.ascii-label{font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--wm);margin-bottom:10px;}
+#ascii-canvas{font-size:clamp(8px,1.5vw,11px);line-height:1.5;color:var(--wd);overflow-x:auto;white-space:pre;display:block;}
+.ascii-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;}
+.ascii-stat{padding:8px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:2px;text-align:center;}
+.ascii-stat-val{font-size:0.8rem;font-weight:600;color:var(--w);display:block;}
+.ascii-stat-key{font-size:0.55rem;text-transform:uppercase;color:var(--wm);letter-spacing:0.08em;}
+.stream-label{font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--wm);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;}
+#stream-log{font-size:clamp(9px,1.4vw,11px);line-height:1.9;color:var(--wm);height:160px;overflow:hidden;position:relative;}
+.stream-line-primary{color:var(--w);}
+.stream-line-accent{color:#4ADE80;}
+.stream-inject-btn{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.06em;text-transform:uppercase;padding:4px 12px;border:1px solid var(--border);border-radius:2px;background:transparent;color:var(--wm);cursor:pointer;transition:all 0.2s;}
+.stream-inject-btn:hover{color:var(--w);border-color:rgba(255,255,255,0.25);}
+
+/* ══ PROJECTS ══ */
+.project-list{display:flex;flex-direction:column;}
+.project-item{display:grid;grid-template-columns:72px 1fr 1fr auto;gap:40px;align-items:start;padding:44px 0;border-bottom:1px solid var(--bl);transition:all 0.3s;}
+.project-item:first-child{border-top:1px solid var(--bl);}
+.project-item:hover .project-title{color:var(--w);}
+.project-num{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--wm);padding-top:4px;}
+.project-badge{display:inline-flex;align-items:center;gap:5px;font-family:'JetBrains Mono',monospace;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--wm);border:1px solid var(--border);padding:3px 8px;border-radius:2px;margin-bottom:8px;}
+.project-badge-dot{width:5px;height:5px;border-radius:50%;background:var(--w);}
+.project-title{font-size:1.3rem;font-weight:600;letter-spacing:-0.02em;color:var(--wd);margin-bottom:10px;transition:color 0.3s;}
+.project-desc{font-size:0.86rem;color:var(--wm);line-height:1.75;max-width:400px;}
+.project-arch{padding:14px;background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:3px;}
+.project-arch-head{font-family:'JetBrains Mono',monospace;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--wm);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.project-arch-row{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:0.68rem;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+.project-arch-row:last-child{border-bottom:none;}
+.project-arch-key{color:var(--wm);}
+.project-arch-val{color:var(--w);font-weight:500;}
+.project-stack-head{font-family:'JetBrains Mono',monospace;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--wm);margin-bottom:8px;}
+.project-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--wm);border:1px solid var(--border);padding:3px 8px;margin-right:5px;margin-bottom:5px;border-radius:2px;transition:all 0.2s;}
+.project-tag:hover{color:var(--w);border-color:rgba(255,255,255,0.2);}
+.project-links{display:flex;flex-direction:column;gap:8px;align-items:flex-end;}
+.proj-link{font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;color:var(--wm);border:1px solid var(--border);padding:7px 14px;border-radius:2px;transition:all 0.2s;white-space:nowrap;display:inline-flex;align-items:center;gap:5px;}
+.proj-link:hover{color:var(--w);border-color:rgba(255,255,255,0.25);}
+.proj-link-p{background:var(--w);color:var(--bg)!important;border-color:var(--w)!important;}
+.proj-link-p:hover{background:var(--wd);}
+
+/* ══ TIMELINE ══ */
+.timeline{display:flex;flex-direction:column;}
+.tl-item{display:grid;grid-template-columns:160px 1px 1fr;gap:0 36px;padding-bottom:48px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-date{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--wm);text-align:right;padding-top:3px;line-height:1.8;}
+.tl-spine{display:flex;flex-direction:column;align-items:center;}
+.tl-dot{width:8px;height:8px;border-radius:50%;border:1px solid var(--wd);background:var(--bg);flex-shrink:0;margin-top:3px;}
+.tl-line{width:1px;flex:1;background:var(--border);margin-top:10px;}
+.tl-item:last-child .tl-line{display:none;}
+.tl-role{font-size:1.1rem;font-weight:600;letter-spacing:-0.015em;margin-bottom:3px;}
+.tl-company{font-size:0.8rem;color:var(--wm);margin-bottom:16px;}
+.tl-points{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.tl-points li{font-size:0.86rem;color:var(--wm);line-height:1.7;padding-left:14px;position:relative;}
+.tl-points li::before{content:'—';position:absolute;left:0;color:var(--border);}
+.tl-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:14px;}
+.tl-chip{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.04em;color:var(--wm);border:1px solid var(--border);padding:3px 8px;border-radius:2px;transition:all 0.25s;}
+
+/* ══ CERTS ══ */
+.cert-row{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--border);font-size:0.875rem;gap:16px;}
+.cert-row:last-child{border-bottom:none;}
+.cert-name{color:var(--wd);}
+.cert-issuer{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--wm);}
+
+/* ══ CONTACT / TERMINAL ══ */
+.contact-section{padding:96px 0 72px;border-top:1px solid var(--bl);}
+.contact-headline{font-size:clamp(2.2rem,5vw,4.2rem);font-weight:800;letter-spacing:-0.035em;margin-bottom:56px;line-height:0.96;}
+.contact-headline em{font-style:normal;opacity:0.35;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.terminal-block{background:var(--bg2);border:1px solid var(--bl);border-radius:4px;overflow:hidden;}
+.terminal-top{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--bl);}
+.t-d{width:10px;height:10px;border-radius:50%;}
+.t-d-r{background:#FF5F57;}.t-d-y{background:#FEBC2E;}.t-d-g{background:#28C840;}
+.t-path{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--wm);margin-left:8px;}
+.t-body{padding:20px;font-family:'JetBrains Mono',monospace;font-size:0.75rem;line-height:1.9;}
+.t-prompt{color:var(--wm);}
+.t-cmd{color:var(--w);}
+.t-out{color:#4ADE80;}
+.t-muted{color:var(--wm);}
+.t-email{color:var(--w);border-bottom:1px solid var(--border);cursor:pointer;transition:border-color 0.2s;}
+.t-email:hover{border-color:var(--w);}
+.t-cursor{display:inline-block;width:7px;height:13px;background:var(--w);animation:blink-c 1s infinite;vertical-align:middle;}
+@keyframes blink-c{0%,100%{opacity:1;}50%{opacity:0;}}
+/* Interactive terminal */
+.term-interactive{background:var(--bg2);border:1px solid var(--bl);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;}
+.term-screen{padding:20px;font-family:'JetBrains Mono',monospace;font-size:0.75rem;line-height:1.9;flex:1;overflow-y:auto;max-height:280px;}
+.term-input-row{display:flex;align-items:center;gap:8px;padding:10px 14px;background:rgba(255,255,255,0.02);border-top:1px solid var(--bl);}
+.term-input-label{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--wm);}
+.term-input{flex:1;background:transparent;border:none;outline:none;font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--w);}
+.term-input::placeholder{color:var(--wm);opacity:0.5;}
+.term-hint{font-family:'JetBrains Mono',monospace;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--wm);padding:2px 8px;border:1px solid var(--border);border-radius:2px;}
+/* Socials */
+.social-block{background:var(--bg2);border:1px solid var(--bl);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:8px;}
+.social-head{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--wm);margin-bottom:8px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+.social-link{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-radius:3px;border:1px solid var(--border);background:rgba(255,255,255,0.02);transition:all 0.25s;}
+.social-link:hover{background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.12);}
+.social-link-name{font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:500;color:var(--w);}
+.social-link-url{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--wm);}
+.dispatch-row{margin-top:8px;padding:14px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:3px;display:flex;align-items:center;justify-content:space-between;}
+.dispatch-email{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--wd);}
+.dispatch-btn{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;padding:8px 16px;background:var(--w);color:var(--bg);border:none;border-radius:2px;cursor:pointer;font-weight:600;transition:all 0.2s;}
+.dispatch-btn:hover{background:var(--wd);}
+
+/* ══ FOOTER ══ */
+footer{position:relative;z-index:1;border-top:1px solid var(--bl);padding:28px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.footer-l{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--wm);}
+.footer-r{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--wm);}
+
+/* ══ REVEAL ══ */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+.r1{transition-delay:0.1s;}.r2{transition-delay:0.2s;}.r3{transition-delay:0.3s;}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:1100px){
+  .arch-grid{grid-template-columns:1fr 1fr;}
+  .project-item{grid-template-columns:48px 1fr;gap:24px;}
+  .project-item .project-arch,.project-item .project-links{display:none;}
+  .ascii-body{grid-template-columns:1fr;}
+  .ascii-left{border-right:none;border-bottom:1px solid var(--bl);}
+  .contact-grid{grid-template-columns:1fr;}
 }
-.nav-logo:hover {
-  transform: scale(1.1) rotate(-4deg);
-  filter: drop-shadow(0 0 10px rgba(248,248,248,0.6));
+@media(max-width:900px){
+  nav{padding:0 24px;}
+  .hero{padding:72px 24px 32px;}
+  .wrap{padding:0 24px;}
+  footer{padding:20px 24px;}
+  .nav-links{display:none;}
+  .nav-ham{display:flex;}
+  .nav-status{display:none;}
+  .arch-grid{grid-template-columns:1fr;}
+  .project-item{grid-template-columns:1fr;}
+  .project-num{display:none;}
+  .tl-item{grid-template-columns:88px 1px 1fr;gap:0 20px;}
+  .tl-date{font-size:0.58rem;}
+  .arch-footnote{grid-template-columns:repeat(2,1fr);gap:20px;}
+  .hero-meta{gap:16px;}
+  .hero-divider{display:none;}
+  .section{padding:72px 0;}
+  .section-header{margin-bottom:40px;}
 }
-.nav-logo path {
-  stroke-dasharray: 100; stroke-dashoffset: 100;
-  animation: logo-draw 1.2s cubic-bezier(.65,0,.35,1) .2s forwards;
+@media(max-width:768px){
+  .hero{padding:68px 20px 24px;}
+  .hero-actions{flex-direction:column;gap:10px;width:100%;margin-bottom:20px;}
+  .hero-actions a{width:100%;text-align:center;justify-content:center;display:flex;}
+  .hero-meta{flex-direction:column;align-items:flex-start;gap:12px;}
+  .hero-stat{display:flex;align-items:baseline;gap:8px;}
+  .hero-stat-label{margin-top:0;}
+  .wrap{padding:0 20px;}
+  nav{padding:0 20px;}
+  .contact-grid{grid-template-columns:1fr;}
+  .cert-row{flex-direction:column;gap:4px;}
+  footer{padding:16px 20px;}
 }
-@keyframes logo-draw { to { stroke-dashoffset: 0; } }
-@media(prefers-reduced-motion:reduce){ .nav-logo path { animation:none; stroke-dashoffset:0; } }
-</style><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        "colors": {
-                "on-surface-variant": "#c4c7c8",
-                "on-tertiary-container": "#63646c",
-                "on-primary-fixed": "#1a1c1c",
-                "on-secondary-container": "#b4b4bd",
-                "inverse-primary": "#5d5f5f",
-                "tertiary-fixed": "#e3e1ec",
-                "surface-container": "#201f22",
-                "on-tertiary": "#2f3038",
-                "primary-fixed-dim": "#c6c6c7",
-                "primary": "#ffffff",
-                "outline": "#8e9192",
-                "on-tertiary-fixed-variant": "#46464e",
-                "on-secondary": "#2f3037",
-                "on-error": "#690005",
-                "on-error-container": "#ffdad6",
-                "background": "#0B0B0B",
-                "tertiary": "#ffffff",
-                "surface-dim": "#131315",
-                "on-primary-container": "#636565",
-                "primary-fixed": "#e2e2e2",
-                "inverse-on-surface": "#313032",
-                "on-secondary-fixed-variant": "#45464e",
-                "surface-variant": "#353437",
-                "tertiary-container": "#e3e1ec",
-                "secondary": "#c6c6cf",
-                "secondary-fixed": "#e2e1eb",
-                "on-tertiary-fixed": "#1a1b22",
-                "on-primary": "#2f3131",
-                "tertiary-fixed-dim": "#c6c5cf",
-                "on-primary-fixed-variant": "#454747",
-                "on-secondary-fixed": "#1a1b22",
-                "secondary-fixed-dim": "#c6c6cf",
-                "surface": "#131315",
-                "secondary-container": "#45464e",
-                "surface-container-high": "#2a2a2c",
-                "on-background": "#e5e1e4",
-                "outline-variant": "#444748",
-                "surface-container-highest": "#353437",
-                "on-surface": "#e5e1e4",
-                "surface-container-low": "#1c1b1d",
-                "surface-container-lowest": "#0e0e10",
-                "surface-tint": "#c6c6c7",
-                "error-container": "#93000a",
-                "error": "#ffb4ab",
-                "inverse-surface": "#e5e1e4",
-                "primary-container": "#e2e2e2",
-                "surface-bright": "#39393b"
-        },
-        "borderRadius": {
-                "DEFAULT": "0.125rem",
-                "lg": "0.25rem",
-                "xl": "0.5rem",
-                "full": "0.75rem"
-        },
-        "spacing": {
-                "card-padding-md": "1.5rem",
-                "card-padding-lg": "2rem",
-                "section-gap": "5rem",
-                "gutter-desktop": "1.5rem",
-                "bento-gap": "1rem",
-                "gutter-mobile": "1rem",
-                "card-padding-sm": "1rem"
-        },
-        "fontFamily": {
-                "code-base": [
-                        "JetBrains Mono"
-                ],
-                "headline-md": [
-                        "Inter"
-                ],
-                "headline-lg": [
-                        "Inter"
-                ],
-                "display-hero-mobile": [
-                        "Inter"
-                ],
-                "headline-sm": [
-                        "Inter"
-                ],
-                "headline-lg-mobile": [
-                        "Inter"
-                ],
-                "code-sm": [
-                        "JetBrains Mono"
-                ],
-                "body-md": [
-                        "Inter"
-                ],
-                "body-lg": [
-                        "Inter"
-                ],
-                "display-hero": [
-                        "Inter"
-                ],
-                "label-caps": [
-                        "JetBrains Mono"
-                ]
-        },
-        "fontSize": {
-                "code-base": [
-                        "0.875rem",
-                        {
-                                "lineHeight": "1.6",
-                                "letterSpacing": "-0.02em",
-                                "fontWeight": "400"
-                        }
-                ],
-                "headline-md": [
-                        "1.5rem",
-                        {
-                                "lineHeight": "1.25",
-                                "letterSpacing": "-0.02em",
-                                "fontWeight": "500"
-                        }
-                ],
-                "headline-lg": [
-                        "2.25rem",
-                        {
-                                "lineHeight": "1.15",
-                                "letterSpacing": "-0.03em",
-                                "fontWeight": "600"
-                        }
-                ],
-                "display-hero-mobile": [
-                        "2.5rem",
-                        {
-                                "lineHeight": "1.1",
-                                "letterSpacing": "-0.03em",
-                                "fontWeight": "600"
-                        }
-                ],
-                "headline-sm": [
-                        "1.125rem",
-                        {
-                                "lineHeight": "1.4",
-                                "letterSpacing": "-0.015em",
-                                "fontWeight": "500"
-                        }
-                ],
-                "headline-lg-mobile": [
-                        "1.75rem",
-                        {
-                                "lineHeight": "1.2",
-                                "letterSpacing": "-0.025em",
-                                "fontWeight": "600"
-                        }
-                ],
-                "code-sm": [
-                        "0.75rem",
-                        {
-                                "lineHeight": "1.5",
-                                "letterSpacing": "0em",
-                                "fontWeight": "400"
-                        }
-                ],
-                "body-md": [
-                        "0.875rem",
-                        {
-                                "lineHeight": "1.5",
-                                "letterSpacing": "-0.005em",
-                                "fontWeight": "400"
-                        }
-                ],
-                "body-lg": [
-                        "1rem",
-                        {
-                                "lineHeight": "1.6",
-                                "letterSpacing": "-0.01em",
-                                "fontWeight": "400"
-                        }
-                ],
-                "display-hero": [
-                        "4rem",
-                        {
-                                "lineHeight": "1.05",
-                                "letterSpacing": "-0.04em",
-                                "fontWeight": "600"
-                        }
-                ],
-                "label-caps": [
-                        "0.6875rem",
-                        {
-                                "lineHeight": "1",
-                                "letterSpacing": "0.08em",
-                                "fontWeight": "500"
-                        }
-                ]
-        }
-},
-    },
-  }</script><script>
-  // Custom Element Handler for <threejs-scene>
-  class ThreejsSceneElement extends HTMLElement {
-    connectedCallback() {
-      const container = this;
-      const srcCode = this.getAttribute('src');
-      if (srcCode) {
-        try {
-          const runFn = new Function('container', 'THREE', srcCode);
-          runFn(container, window.THREE);
-        } catch (e) {
-          console.warn('Three.js scene execution error:', e);
-        }
-      }
-    }
-  }
-  if (!customElements.get('threejs-scene')) {
-    customElements.define('threejs-scene', ThreejsSceneElement);
-  }
-</script></head><body class="bg-tech-matrix font-body-md text-body-md text-on-surface antialiased selection:bg-primary selection:text-surface"><div class="hidden md:block" id="custom-cursor-dot"></div><div class="hidden md:block" id="custom-cursor-glow"></div><header class="fixed top-0 left-0 right-0 w-full z-50 bg-[#0B0B0B]/85 backdrop-blur-xl border-b border-white/[0.06] shadow-[0_1px_12px_rgba(0,0,0,0.65)]"><div class="h-16 max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop flex items-center justify-between"><div class="flex items-center gap-4"><a class="flex items-center gap-3 group focus:outline-none" data-path="home" href="#"><svg aria-hidden="true" class="nav-logo" fill="none" height="32" viewbox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"><rect fill="#000" height="32" rx="7" stroke="rgba(255,255,255,0.15)" stroke-width="1" width="32"></rect><path d="M16,7 L16,14 L23,10 L16,18 L23,22 L16,26 Q10,26 9,21" pathlength="100" stroke="#F8F8F8" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path><circle cx="23" cy="10" fill="#F8F8F8" r="2"></circle><circle cx="23" cy="22" fill="#F8F8F8" r="2"></circle></svg><div class="flex flex-col"><span class="font-headline-sm text-body-md font-semibold text-primary tracking-tight">Jitendra Kumar Saini</span><span class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider">AI/ML Systems</span></div></a><div class="hidden sm:flex items-center gap-2 px-2 py-1 rounded-full bg-surface-container-low"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span><span class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest">Available for hire</span></div></div><nav class="hidden md:flex items-center gap-8" data-active-classes="text-primary font-semibold"><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors duration-150" data-path="architecture" href="#architecture">Architecture</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors duration-150" data-path="featured-projects" href="#featured-projects">Featured Projects</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors duration-150" data-path="experience" href="#experience">Experience</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors duration-150" data-path="contact" href="#contact">Contact</a></nav><div class="flex items-center gap-4"><a class="hidden sm:inline-flex items-center justify-center px-4 py-1.5 rounded-lg bg-primary text-on-primary font-body-md text-body-md font-medium hover:bg-primary-fixed hover:text-on-primary-fixed transition-all duration-150 shadow-sm" data-path="resume" href="#contact">Resume</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-tech-matrix relative overflow-hidden"><div class="absolute inset-0 pointer-events-none ambient-glow-backdrop z-0"></div><div class="flex flex-col w-full text-on-surface relative z-10">
-<!-- BACKGROUND SUBTLE GEOMETRIC CANVAS -->
-<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-35 mix-blend-screen">
-<canvas class="w-full h-full" id="neural-mesh-canvas"></canvas>
+@media(max-width:480px){
+  .hero-headline{font-size:clamp(1.9rem,8vw,2.4rem);}
+  .section-header{flex-direction:column;}
+  .section-desc{text-align:left;}
+  .tl-item{grid-template-columns:68px 1px 1fr;gap:0 12px;}
+  .arch-footnote{grid-template-columns:1fr 1fr;}
+  .arch-col{padding:20px 16px;}
+  .wrap{padding:0 16px;}
+  nav{padding:0 16px;}
+  .section{padding:52px 0;}
+  .contact-headline{font-size:clamp(1.8rem,7vw,2.6rem);}
+  .social-link-url{display:none;}
+}
+</style>
+</head>
+<body>
+
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+<canvas id="canvas-bg"></canvas>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-logo-wrap">
+    <!-- Animated SVG logo from portfolio.html -->
+    <svg class="nav-logo" width="30" height="30" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect width="32" height="32" rx="7" fill="#000" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+      <path d="M16,7 L16,14 L23,10 L16,18 L23,22 L16,26 Q10,26 9,21" stroke="#F8F8F8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" pathLength="100"/>
+      <circle cx="23" cy="10" r="2" fill="#F8F8F8"/>
+      <circle cx="23" cy="22" r="2" fill="#F8F8F8"/>
+    </svg>
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">Jitendra Kumar Saini</span>
+      <span class="nav-brand-sub">AI/ML Systems</span>
+    </div>
+    <div class="nav-status" style="margin-left:8px;">
+      <span class="nav-status-dot"></span>
+      <span class="nav-status-text">Available</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#architecture" data-color="#F8F8F8">Architecture</a>
+    <a href="#projects" data-color="#F8F8F8">Projects</a>
+    <a href="#experience" data-color="#F8F8F8">Experience</a>
+    <a href="#contact" data-color="#F8F8F8">Contact</a>
+    <a href="Jitendra_Kumar_Saini_Resume.pdf" download class="nav-resume" data-color="#0B0B0B">Resume ↓</a>
+  </div>
+  <div class="nav-ham" onclick="toggleMob()"><span></span><span></span></div>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="#architecture" onclick="toggleMob()">Architecture</a>
+  <a href="#projects" onclick="toggleMob()">Projects</a>
+  <a href="#experience" onclick="toggleMob()">Experience</a>
+  <a href="#contact" onclick="toggleMob()">Contact</a>
+  <a href="Jitendra_Kumar_Saini_Resume.pdf" download onclick="toggleMob()" style="color:var(--w);font-weight:600;">Resume ↓</a>
 </div>
-<!-- HERO SECTION -->
-<section class="relative z-10 w-full max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop pt-8 pb-16 lg:pt-16 lg:pb-24">
-<div class="flex flex-col gap-6 lg:gap-8">
-<!-- System Status / Availability Pill -->
-<div class="inline-flex items-center gap-3 self-start px-3 py-1.5 rounded-full bg-surface-container-low shadow-sm">
-<span class="inline-block w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-<span class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
-          Available for full-time roles · Jaipur, Rajasthan, IN
-        </span>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-eyebrow reveal">AI / ML Engineer &nbsp;·&nbsp; Python Developer &nbsp;·&nbsp; LLM Orchestration</div>
+  <h1 class="hero-headline reveal r1">Building<br><span style="opacity:0.4;">Intelligent</span><br>Systems.</h1>
+  <p class="hero-sub reveal r2">End-to-end AI/ML pipelines, agentic LLM systems, scalable REST APIs, and computer vision — engineered from model training to production deployment.</p>
+  <div class="hero-actions reveal r2">
+    <a href="#projects" class="btn-w" data-color="#F8F8F8">View Engineering Work</a>
+    <a href="#contact" class="btn-g" data-color="#F8F8F8">Get In Touch</a>
+  </div>
+  <div class="hero-meta reveal r3">
+    <div class="hero-stat"><div class="hero-stat-num">3+</div><div class="hero-stat-label">Models Deployed</div></div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat"><div class="hero-stat-num">500+</div><div class="hero-stat-label">Daily API Requests</div></div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat"><div class="hero-stat-num">60%</div><div class="hero-stat-label">Ops Efficiency Gain</div></div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat"><div class="hero-stat-num">8.0</div><div class="hero-stat-label">CGPA / 10</div></div>
+  </div>
 </div>
-<!-- Main Typography Lockup -->
-<div class="flex flex-col gap-3">
-<div class="flex items-baseline gap-4 flex-wrap">
-<h1 class="font-display-hero text-display-hero text-primary tracking-tighter">
-            Jitendra Kumar Saini
-          </h1>
+
+<div class="wrap">
+<!-- ══ ARCHITECTURE ══ -->
+<section class="section" id="architecture">
+  <div class="section-header reveal">
+    <div><div class="section-index">01 / Core Architecture</div><h2 class="section-title">Technical Stack</h2></div>
+    <p class="section-desc">Categorised by domain. Comfortable across the full AI/ML development lifecycle.</p>
+  </div>
+
+  <div class="arch-grid reveal">
+    <div class="arch-col">
+      <div class="arch-col-head">Language &amp; Runtime</div>
+      <div class="arch-item" data-color="#3776AB"><span>Python</span><span class="arch-tag">primary</span></div>
+      <div class="arch-item" data-color="#CC2927"><span>SQL</span><span class="arch-tag">relational</span></div>
+      <div class="arch-item" data-color="#659AD2"><span>C / C++</span><span class="arch-tag">systems</span></div>
+      <div class="arch-item" data-color="#E34F26"><span>HTML</span><span class="arch-tag">markup</span></div>
+    </div>
+    <div class="arch-col">
+      <div class="arch-col-head">AI / ML Engineering</div>
+      <div class="arch-item" data-color="#FF6F00"><span>TensorFlow / Keras</span><span class="arch-tag">deep learning</span></div>
+      <div class="arch-item" data-color="#F7931E"><span>Scikit-learn</span><span class="arch-tag">classical ml</span></div>
+      <div class="arch-item" data-color="#5C3EE8"><span>OpenCV + dlib</span><span class="arch-tag">computer vision</span></div>
+      <div class="arch-item" data-color="#A855F7"><span>CNNs / NLP</span><span class="arch-tag">architectures</span></div>
+      <div class="arch-item" data-color="#06B6D4"><span>EDA &amp; Feature Eng.</span><span class="arch-tag">data pipeline</span></div>
+    </div>
+    <div class="arch-col">
+      <div class="arch-col-head">LLM &amp; Agentic Systems</div>
+      <div class="arch-item" data-color="#1C7C3C"><span>LangChain</span><span class="arch-tag">orchestration</span></div>
+      <div class="arch-item" data-color="#2D6A4F"><span>LangGraph</span><span class="arch-tag">agent graphs</span></div>
+      <div class="arch-item" data-color="#8B5CF6"><span>RAG Pipelines</span><span class="arch-tag">retrieval</span></div>
+      <div class="arch-item" data-color="#F59E0B"><span>Groq / LLM APIs</span><span class="arch-tag">inference</span></div>
+      <div class="arch-item" data-color="#EC4899"><span>Prompt Engineering</span><span class="arch-tag">design</span></div>
+    </div>
+    <div class="arch-col">
+      <div class="arch-col-head">Backend &amp; APIs</div>
+      <div class="arch-item" data-color="#009688"><span>FastAPI</span><span class="arch-tag">primary</span></div>
+      <div class="arch-item" data-color="#888"><span>Flask</span><span class="arch-tag">micro-framework</span></div>
+      <div class="arch-item" data-color="#F8F8F8"><span>REST API Design</span><span class="arch-tag">architecture</span></div>
+      <div class="arch-item" data-color="#4479A1"><span>MySQL / SQLite</span><span class="arch-tag">persistence</span></div>
+    </div>
+    <div class="arch-col">
+      <div class="arch-col-head">Data &amp; Visualisation</div>
+      <div class="arch-item" data-color="#013243"><span>NumPy / Pandas</span><span class="arch-tag">data wrangling</span></div>
+      <div class="arch-item" data-color="#11557C"><span>Matplotlib / Seaborn</span><span class="arch-tag">visualisation</span></div>
+      <div class="arch-item" data-color="#FF4B4B"><span>Streamlit / Gradio</span><span class="arch-tag">demo ui</span></div>
+    </div>
+    <div class="arch-col">
+      <div class="arch-col-head">Deployment &amp; Tools</div>
+      <div class="arch-item" data-color="#46E3B7"><span>Render / Vercel</span><span class="arch-tag">cloud deploy</span></div>
+      <div class="arch-item" data-color="#F05032"><span>Git / GitHub</span><span class="arch-tag">version control</span></div>
+      <div class="arch-item" data-color="#FCC624"><span>Linux</span><span class="arch-tag">os</span></div>
+      <div class="arch-item" data-color="#007ACC"><span>VS Code</span><span class="arch-tag">ide</span></div>
+      <div class="arch-item" data-color="#00979D"><span>Arduino IDE</span><span class="arch-tag">embedded</span></div>
+    </div>
+  </div>
+
+  <div class="arch-footnote reveal">
+    <div><div class="fn-val">3+</div><div class="fn-label">Production Deployments</div></div>
+    <div><div class="fn-val">5</div><div class="fn-label">End-to-End Projects</div></div>
+    <div><div class="fn-val">2</div><div class="fn-label">Cloud Platforms</div></div>
+    <div><div class="fn-val">3mo</div><div class="fn-label">Industry Internship</div></div>
+  </div>
+
+  <!-- LIVE ASCII BLOCK (from portfolio.html) -->
+  <div class="ascii-block reveal">
+    <div class="ascii-topbar">
+      <div style="display:flex;align-items:center;">
+        <div class="ascii-dots"><span class="ascii-dot" style="background:#FF5F57"></span><span class="ascii-dot" style="background:#FEBC2E"></span><span class="ascii-dot" style="background:#28C840"></span></div>
+        <span class="ascii-filename">ascii_kernel_telemetry.py // LangGraph_State_Engine</span>
+      </div>
+      <div class="ascii-badge"><span></span>LIVE DEMO</div>
+    </div>
+    <div class="ascii-body">
+      <div class="ascii-left">
+        <div class="ascii-label">// ASCII Neural Attention Map &nbsp;<span id="ascii-frame-id" style="color:var(--wm)">FRAME: 0001</span></div>
+        <code id="ascii-canvas"></code>
+        <div class="ascii-stats">
+          <div class="ascii-stat"><span class="ascii-stat-val" id="token-rate">482 t/s</span><span class="ascii-stat-key">Token Rate</span></div>
+          <div class="ascii-stat"><span class="ascii-stat-val">128k</span><span class="ascii-stat-key">Context</span></div>
+          <div class="ascii-stat"><span class="ascii-stat-val" id="eval-loss">0.0142</span><span class="ascii-stat-key">Eval Loss</span></div>
+        </div>
+      </div>
+      <div class="ascii-right">
+        <div class="stream-label">// Live Inference Pipeline Log <button class="stream-inject-btn" id="inject-btn">Inject Packet</button></div>
+        <div id="stream-log"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROJECTS ══ -->
+<section class="section" id="projects">
+  <div class="section-header reveal">
+    <div><div class="section-index">02 / Engineering Work</div><h2 class="section-title">Featured Projects</h2></div>
+    <p class="section-desc">Case-study style. Each built end-to-end from architecture to deployment.</p>
+  </div>
+
+  <div class="project-list">
+    <div class="project-item reveal" data-color="#1C7C3C">
+      <div class="project-num">01</div>
+      <div>
+        <div class="project-badge"><span class="project-badge-dot"></span>Live LLM Pipeline</div>
+        <div class="project-title">AI Conversational Agent</div>
+        <div class="project-desc">Multi-turn LLM chatbot with persistent session memory via ConversationBufferMemory, real-time streaming responses via Groq LPU inference, deployed on Streamlit Community Cloud.</div>
+        <div style="margin-top:12px;"><div class="project-stack-head">Stack</div>
+          <span class="project-tag" data-color="#3776AB">Python</span>
+          <span class="project-tag" data-color="#1C7C3C">LangChain</span>
+          <span class="project-tag" data-color="#F59E0B">Groq</span>
+          <span class="project-tag" data-color="#FF4B4B">Streamlit</span>
+        </div>
+      </div>
+      <div class="project-arch">
+        <div class="project-arch-head">Architecture</div>
+        <div class="project-arch-row"><span class="project-arch-key">Inference</span><span class="project-arch-val">Groq LPU</span></div>
+        <div class="project-arch-row"><span class="project-arch-key">Memory</span><span class="project-arch-val">Sliding Buffer</span></div>
+        <div class="project-arch-row"><span class="project-arch-key">Context</span><span class="project-arch-val">Stateful</span></div>
+        <div class="project-arch-row"><span class="project-arch-key">Streaming</span><span class="project-arch-val">Real-time</span></div>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/jitendra205saini" target="_blank" class="proj-link" data-color="#F8F8F8">GitHub →</a>
+        <a href="#" class="proj-link proj-link-p" data-color="#F8F8F8">Live ↗</a>
+      </div>
+    </div>
+
+    <div class="project-item reveal" data-color="#5C3EE8">
+      <div class="project-num">02</div>
+      <div>
+        <div class="project-badge"><span class="project-badge-dot"></span>Computer Vision · Edge</div>
+        <div class="project-title">Real-Time Face Recognition Attendance Engine</div>
+        <div class="project-desc">Edge CV pipeline detecting 68 facial landmarks at 30+ FPS using dlib deep metric learning. Auto-logs to MySQL with zero duplicate registrations.</div>
+        <div style="margin-top:12px;"><div class="project-stack-head">Stack</div>
+          <span class="project-tag" data-color="#5C3EE8">OpenCV</span>
+          <span class="project-tag" data-color="#A855F7">dlib</span>
+          <span class="project-tag" data-color="#3776AB">Python</span>
+          <span class="project-tag" data-color="#4479A1">MySQL</span>
+        </div>
+      </div>
+      <div class="project-arch">
+        <div class="project-arch-head">Pipeline Metrics</div>
+        <div class="project-arch-row"><span class="project-arch-key">Model</span><span class="project-arch-val">dlib ResNet</span></div>
+        <div class="project-arch-row"><span class="project-arch-key">Landmarks</span><span class="project-arch-val">68 Keypoints</span></div>
+        <div class="project-arch-row"><span class="project-arch-key">FPS</span><span class="project-arch-val">30+</span></div>
+        <div class="project-arch-row"><span class="project-arch-key">Storage</span><span class="project-arch-val">MySQL</span></div>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/jitendra205saini" target="_blank" class="proj-link" data-color="#F8F8F8">GitHub →</a>
+      </div>
+    </div>
+
+    <div class="project-item reveal" data-color="#FF6F00">
+      <div class="project-num">03</div>
+      <div>
+        <div class="project-badge"><span class="project-badge-dot"></span>Deep Learning · CNN</div>
+        <div class="project-title">Image Classification — Deep Learning Pipeline</div>
+        <div class="project-desc">End-to-end CNN with data augmentation, batch normalisation, dropout regularisation. Class-activation maps for interpretability, confusion matrices for diagnostics.</div>
+        <div style="margin-top:12px;"><div class="project-stack-head">Stack</div>
+          <span class="project-tag" data-color="#FF6F00">TensorFlow</span>
+          <span class="project-tag" data-color="#FF6F00">Keras</span>
+          <span class="project-tag" data-color="#013243">NumPy</span>
+          <span class="project-tag" data-color="#11557C">Matplotlib</span>
+        </div>
+      </div>
+      <div class="project-arch">
+        <div class="project-arch-head">Diagnostics</div>
+        <div class="project-arch-row"><span class="project-arch-key">Regularisation</span><span class="project-arch-val">Dropout + BN</span></div>
+        <div class="project-arch-row"><span class="project-arch-key">Interpret.</span><span class="project-arch-val">CAMs</span></div>
+        <div class="project-arch-row"><span class="project-arch-key">Eval</span><span class="project-arch-val">Confusion Matrix</span></div>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/jitendra205saini" target="_blank" class="proj-link" data-color="#F8F8F8">GitHub →</a>
+      </div>
+    </div>
+
+    <div class="project-item reveal" data-color="#009688">
+      <div class="project-num">04</div>
+      <div>
+        <div class="project-badge"><span class="project-badge-dot"></span>NLP · Analytics</div>
+        <div class="project-title">Data Analytics Dashboard &amp; NLP Text Classifier</div>
+        <div class="project-desc">TF-IDF + Logistic Regression text-classification wrapped in Flask dashboard deployed on Render. Enables non-technical stakeholders to query predictions without code.</div>
+        <div style="margin-top:12px;"><div class="project-stack-head">Stack</div>
+          <span class="project-tag" data-color="#013243">Pandas</span>
+          <span class="project-tag" data-color="#F7931E">Scikit-learn</span>
+          <span class="project-tag" data-color="#888">Flask</span>
+          <span class="project-tag" data-color="#46E3B7">Render</span>
+        </div>
+      </div>
+      <div class="project-arch">
+        <div class="project-arch-head">Model Info</div>
+        <div class="project-arch-row"><span class="project-arch-key">Features</span><span class="project-arch-val">TF-IDF</span></div>
+        <div class="project-arch-row"><span class="project-arch-key">Classifier</span><span class="project-arch-val">Logistic Reg.</span></div>
+        <div class="project-arch-row"><span class="project-arch-key">Deploy</span><span class="project-arch-val">Render Cloud</span></div>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/jitendra205saini" target="_blank" class="proj-link" data-color="#F8F8F8">GitHub →</a>
+        <a href="#" class="proj-link proj-link-p" data-color="#F8F8F8">Live ↗</a>
+      </div>
+    </div>
+
+    <div class="project-item reveal" data-color="#00979D">
+      <div class="project-num">05</div>
+      <div>
+        <div class="project-badge"><span class="project-badge-dot"></span>Embedded · IoT</div>
+        <div class="project-title">IoT Smart Sensor Monitoring System</div>
+        <div class="project-desc">Full-stack IoT prototype: C/C++ firmware, custom PCB via EasyEDA, mechanical enclosure in Fusion 360. UART serial telemetry streaming from hardware to dashboard.</div>
+        <div style="margin-top:12px;"><div class="project-stack-head">Stack</div>
+          <span class="project-tag" data-color="#00979D">Arduino</span>
+          <span class="project-tag" data-color="#659AD2">C/C++</span>
+          <span class="project-tag" data-color="#F8F8F8">EasyEDA</span>
+          <span class="project-tag" data-color="#F8F8F8">Fusion 360</span>
+        </div>
+      </div>
+      <div class="project-arch">
+        <div class="project-arch-head">Hardware Stack</div>
+        <div class="project-arch-row"><span class="project-arch-key">MCU</span><span class="project-arch-val">Arduino</span></div>
+        <div class="project-arch-row"><span class="project-arch-key">PCB</span><span class="project-arch-val">EasyEDA</span></div>
+        <div class="project-arch-row"><span class="project-arch-key">CAD</span><span class="project-arch-val">Fusion 360</span></div>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/jitendra205saini" target="_blank" class="proj-link" data-color="#F8F8F8">GitHub →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EXPERIENCE ══ -->
+<section class="section" id="experience">
+  <div class="section-header reveal">
+    <div><div class="section-index">03 / Experience</div><h2 class="section-title">Milestones</h2></div>
+    <p class="section-desc">Professional work history, academic background, and verified credentials.</p>
+  </div>
+
+  <div class="timeline reveal">
+    <div class="tl-item">
+      <div class="tl-date">Jul – Sep 2025<br>3 months</div>
+      <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div>
+        <div class="tl-role">AI Developer Intern</div>
+        <div class="tl-company">AbyM Technology Pvt. Ltd. — Noida, UP</div>
+        <ul class="tl-points">
+          <li>Engineered and deployed <strong style="color:var(--w)">3+ production AI/ML models</strong> using Python, Scikit-learn &amp; TensorFlow solving real client problems.</li>
+          <li>Designed FastAPI &amp; Flask REST endpoints on Render and Vercel handling <strong style="color:var(--w)">500+ daily requests</strong> with zero downtime.</li>
+          <li>Implemented LangChain &amp; LangGraph pipelines — reduced manual monitoring effort by <strong style="color:var(--w)">60%</strong>.</li>
+          <li>Maintained <strong style="color:var(--w)">100% on-time delivery rate</strong> across all tasks over the 3-month engagement.</li>
+        </ul>
+        <div class="tl-chips">
+          <span class="tl-chip" data-color="#009688">FastAPI</span>
+          <span class="tl-chip" data-color="#1C7C3C">LangChain</span>
+          <span class="tl-chip" data-color="#2D6A4F">LangGraph</span>
+          <span class="tl-chip" data-color="#FF6F00">TensorFlow</span>
+          <span class="tl-chip" data-color="#46E3B7">Render</span>
+          <span class="tl-chip" data-color="#F8F8F8">Vercel</span>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">2022 – 2026<br>4 years</div>
+      <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div>
+        <div class="tl-role">B.Tech — Artificial Intelligence &amp; Data Science</div>
+        <div class="tl-company">Arya College of Engineering — RTU, Jaipur, Rajasthan</div>
+        <ul class="tl-points">
+          <li>CGPA: 8.0 / 10 &nbsp;·&nbsp; Graduating 2026</li>
+          <li>Core coursework: Machine Learning, Deep Learning, NLP, Computer Vision, Data Structures, Algorithms, Database Systems.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:56px" class="reveal">
+    <div class="section-index" style="margin-bottom:20px">Certifications</div>
+    <div>
+      <div class="cert-row"><span class="cert-name">AI Developer Intern Completion Certificate</span><span class="cert-issuer">AbyM Technology · Oct 2025</span></div>
+      <div class="cert-row"><span class="cert-name">Advanced C/C++ Programming Certification</span><span class="cert-issuer">Spoken Tutorial, IIT Bombay · 2023</span></div>
+      <div class="cert-row"><span class="cert-name">HTML Training Certification</span><span class="cert-issuer">Spoken Tutorial, IIT Bombay · 2024</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<div class="contact-section" id="contact">
+  <h2 class="contact-headline reveal">Let's build<br>something<br><em>consequential.</em></h2>
+  <div class="contact-grid reveal">
+    <!-- Left: Static terminal + dispatch -->
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div class="terminal-block">
+        <div class="terminal-top">
+          <div class="t-d t-d-r"></div><div class="t-d t-d-y"></div><div class="t-d t-d-g"></div>
+          <span class="t-path">~ jks@ml-node-01:contact.sh</span>
+        </div>
+        <div class="t-body">
+          <div><span class="t-prompt">$ </span><span class="t-cmd">whoami</span></div>
+          <div><span class="t-out">Jitendra Kumar Saini — AI/ML Engineer</span></div>
+          <br>
+          <div><span class="t-prompt">$ </span><span class="t-cmd">echo $EMAIL</span></div>
+          <div><span class="t-out"><span class="t-email" onclick="copyEmail()" id="email-el" title="Click to copy">Jitendra205saini@gmail.com</span></span>
+            <span id="copy-ok" style="display:none;color:#4ADE80;font-size:0.65rem;margin-left:10px;">copied ✓</span>
+          </div>
+          <br>
+
+          <div><span class="t-prompt">$ </span><span class="t-cmd">cat status.txt</span></div>
+          <div><span class="t-muted">Jaipur, IN · Open to remote &amp; relocation</span></div>
+          <div><span class="t-prompt">$&nbsp;</span><span class="t-cursor"></span></div>
+        </div>
+      </div>
+      <div class="dispatch-row" style="background:var(--bg2);border:1px solid var(--bl);border-radius:4px;padding:14px 20px;">
+        <div><div style="font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--wm);margin-bottom:4px;">Direct Dispatch</div><div class="dispatch-email">Jitendra205saini@gmail.com</div></div>
+        <a href="mailto:Jitendra205saini@gmail.com" class="dispatch-btn" data-color="#0B0B0B">Send Email ↗</a>
+      </div>
+    </div>
+    <!-- Right: Interactive terminal + socials -->
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div class="term-interactive">
+        <div class="terminal-top">
+          <div class="t-d t-d-r"></div><div class="t-d t-d-y"></div><div class="t-d t-d-g"></div>
+          <span class="t-path">~ interactive shell — try: skills, github, help</span>
+        </div>
+        <div class="term-screen" id="term-screen">
+          <div><span class="t-prompt">jks@ml-node-01:~$ </span><span class="t-cmd">./query_status.sh</span></div>
+          <div><span class="t-out">&gt; Open for AI/ML, Python Backend, LLM Systems roles...</span></div>
+          <div><span class="t-muted">Type a command below. Try: whoami, skills, github, clear</span></div>
+        </div>
+        <div class="term-input-row">
+          <span class="term-input-label">jks@ml-node-01:~$</span>
+          <input class="term-input" id="term-input" placeholder="type a command..." autocomplete="off" spellcheck="false"/>
+          <span class="term-hint">Enter</span>
+        </div>
+      </div>
+      <div class="social-block">
+        <div class="social-head">Developer Profiles</div>
+        <a href="https://github.com/jitendra205saini" target="_blank" class="social-link" data-color="#F8F8F8">
+          <span class="social-link-name">GitHub</span>
+          <span class="social-link-url">github.com/jitendra205saini ↗</span>
+        </a>
+        <a href="https://www.linkedin.com/in/jitendarkumarsaini25/" target="_blank" class="social-link" data-color="#0A66C2">
+          <span class="social-link-name">LinkedIn</span>
+          <span class="social-link-url">jitendarkumarsaini25 ↗</span>
+        </a>
+        <a href="https://www.kaggle.com/jitendrakumarsaini25" target="_blank" class="social-link" data-color="#20BEFF">
+          <span class="social-link-name">Kaggle</span>
+          <span class="social-link-url">jitendrakumarsaini25 ↗</span>
+        </a>
+        <a href="https://huggingface.co/jitendra25" target="_blank" class="social-link" data-color="#FFD21E">
+          <span class="social-link-name">HuggingFace</span>
+          <span class="social-link-url">jitendra25 ↗</span>
+        </a>
+        <a href="https://www.hackerrank.com/profile/jitendra205saini" target="_blank" class="social-link" data-color="#00EA64">
+          <span class="social-link-name">HackerRank</span>
+          <span class="social-link-url">jitendra205saini ↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
-<p class="font-code-base text-code-base text-on-surface-variant max-w-3xl">
-          AI / ML Engineer · Python Developer · LLM Orchestration
-        </p>
-</div>
-<!-- Subtitle Statement -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-2 items-end">
-<div class="lg:col-span-8">
-<p class="font-headline-sm text-headline-sm text-on-surface font-normal leading-relaxed">
-            Building Intelligent Systems. End-to-end AI/ML pipelines, agentic LLM systems, scalable REST APIs, and computer vision — engineered from model training to production deployment.
-          </p>
-</div>
-<div class="lg:col-span-4 flex items-center gap-3 justify-start lg:justify-end">
-<a class="interactive inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-on-primary font-body-md text-body-md font-medium hover:bg-primary-fixed transition-all shadow-md" data-color="#FAFAFA" href="#contact">
-<span class="material-symbols-outlined text-[18px]">terminal</span>
-<span>Initialize Ping</span>
-</a>
-<a class="interactive inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-surface-container-high text-primary font-body-md text-body-md font-medium hover:bg-surface-bright transition-all" data-color="#FFFFFF" href="#architecture">
-<span class="material-symbols-outlined text-[18px]">account_tree</span>
-<span>View Arch</span>
-</a>
-</div>
-</div>
-<!-- PHOTO/HARDWARE GLIMPSE METRIC MOSAIC WITH 3D WIREFRAME INTEGRATION -->
-<div class="relative w-full rounded-xl overflow-hidden bg-surface-container-lowest mt-4 shadow-xl border border-surface-container-high">
-<div class="grid grid-cols-1 md:grid-cols-12">
-<!-- Terminal Status Card -->
-<div class="md:col-span-7 p-card-padding-md lg:p-card-padding-lg flex flex-col justify-between bg-surface-container-low/90 backdrop-blur-sm relative z-10 border-b md:border-b-0 md:border-r border-surface-container-high">
-<div class="flex items-center justify-between pb-4">
-<div class="flex items-center gap-2">
-<span class="w-2.5 h-2.5 rounded-full bg-surface-variant"></span>
-<span class="w-2.5 h-2.5 rounded-full bg-surface-variant"></span>
-<span class="w-2.5 h-2.5 rounded-full bg-surface-variant"></span>
-<span class="font-code-sm text-code-sm text-on-surface-variant ml-2">node_cluster_v1.sh</span>
-</div>
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">HOST: ACTIVE</span>
-</div>
-<div class="font-code-base text-code-base space-y-1.5 text-on-surface-variant">
-<p><span class="text-primary">&gt; SYSTEM CHECK:</span> Initializing agentic inference pipeline...</p>
-<p><span class="text-primary">&gt; RUNTIME:</span> Python | LangChain | LangGraph | FastAPI</p>
-<p><span class="text-primary">&gt; TOPOLOGY:</span> Groq LPU Inference ↔ LangGraph Stateful StateMachine</p>
-<p class="text-primary font-medium">&gt; STATUS: Production inference serving 500+ requests/day.</p>
-</div>
-<div class="pt-6 flex items-center gap-4 text-on-surface-variant font-code-sm text-code-sm">
-<span>Internship: AbyM Technology</span>
-<span>•</span>
-<span>Jaipur, Rajasthan</span>
-</div>
-</div>
-<!-- 3D Neural Wireframe Mesh & Synthetic Micro-Telemetry Visual -->
-<div class="md:col-span-5 relative min-h-[260px] bg-surface-container-lowest flex flex-col justify-between p-card-padding-md overflow-hidden">
-<!-- Embedded Interactive 3D Three.js Scene Element -->
-<!-- STITCH_THREEJS_START:ANIMATION_10 class="absolute inset-0 w-full h-full bg-transparent" -->
-<div class="absolute inset-0 w-full h-full bg-transparent" style="display:block;">
-<div id="threejs-container-ANIMATION_10" style="width:100%;height:100%"></div>
+</div><!-- /wrap -->
+
+<footer>
+  <div class="footer-l">JKS@ML-NODE:~# &nbsp;© 2025 Jitendra Kumar Saini. All rights reserved.</div>
+  <div class="footer-r">Jaipur, IN · B.Tech AI &amp; DS 2026</div>
+</footer>
+
+<!-- ══ THREE.JS — upgraded neural mesh from portfolio.html ══ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-(function() {
-  const container = document.getElementById('threejs-container-ANIMATION_10');
-  const devicePixelRatio = window.devicePixelRatio || 1;
-  const width = container.clientWidth || 400;
-const height = container.clientHeight || 260;
+(function(){
+  const canvas=document.getElementById('canvas-bg');
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.setSize(window.innerWidth,window.innerHeight);
+  renderer.setClearColor(0,0);
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(50,window.innerWidth/window.innerHeight,0.1,200);
 
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-camera.position.set(0, 0, 19);
+  // Neural cluster group
+  const cluster=new THREE.Group();
+  scene.add(cluster);
 
-const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-renderer.setSize(width, height);
-renderer.setClearColor(0x000000, 0);
-container.appendChild(renderer.domElement);
+  // Inner icosahedron core
+  const core1=new THREE.Mesh(
+    new THREE.IcosahedronGeometry(4,1),
+    new THREE.MeshBasicMaterial({color:0x444455,wireframe:true,transparent:true,opacity:0.7})
+  );
+  cluster.add(core1);
 
-const neuralCluster = new THREE.Group();
-scene.add(neuralCluster);
+  // Outer dodecahedron shell
+  const core2=new THREE.Mesh(
+    new THREE.DodecahedronGeometry(6.5,1),
+    new THREE.MeshBasicMaterial({color:0x333344,wireframe:true,transparent:true,opacity:0.35})
+  );
+  cluster.add(core2);
 
-// 1. Central AI Core - Nested Wireframe Geodesic Polyhedron
-const innerCoreGeo = new THREE.IcosahedronGeometry(3.5, 1);
-const innerCoreMat = new THREE.MeshBasicMaterial({
-  color: 0xffffff,
-  wireframe: true,
-  transparent: true,
-  opacity: 0.85
-});
-const innerCore = new THREE.Mesh(innerCoreGeo, innerCoreMat);
-neuralCluster.add(innerCore);
+  // Orbital rings
+  const ring1=new THREE.Mesh(
+    new THREE.TorusGeometry(9,0.05,16,100),
+    new THREE.MeshBasicMaterial({color:0x4a4a5a,transparent:true,opacity:0.5})
+  );
+  ring1.rotation.x=Math.PI/2.5;
+  cluster.add(ring1);
 
-const outerCoreGeo = new THREE.DodecahedronGeometry(5.4, 1);
-const outerCoreMat = new THREE.MeshBasicMaterial({
-  color: 0x666677,
-  wireframe: true,
-  transparent: true,
-  opacity: 0.4
-});
-const outerCore = new THREE.Mesh(outerCoreGeo, outerCoreMat);
-neuralCluster.add(outerCore);
+  const ring2=new THREE.Mesh(
+    new THREE.TorusGeometry(10.5,0.04,16,100),
+    new THREE.MeshBasicMaterial({color:0x5a5a6a,transparent:true,opacity:0.35})
+  );
+  ring2.rotation.y=Math.PI/3;ring2.rotation.x=Math.PI/6;
+  cluster.add(ring2);
 
-// 2. Multi-axis Quantum Orbital Rings (Elliptical Gyroscopic Tensor Rings)
-const ringGeo1 = new THREE.TorusGeometry(7.5, 0.05, 16, 100);
-const ringMat1 = new THREE.MeshBasicMaterial({
-  color: 0x9999aa,
-  transparent: true,
-  opacity: 0.65
-});
-const ring1 = new THREE.Mesh(ringGeo1, ringMat1);
-ring1.rotation.x = Math.PI / 2.5;
-neuralCluster.add(ring1);
+  // Synaptic node cloud
+  const nc=80,np=new Float32Array(nc*3);
+  for(let i=0;i<nc*3;i+=3){
+    const r=4.5+Math.random()*6,t=Math.random()*Math.PI*2,p=Math.acos(Math.random()*2-1);
+    np[i]=r*Math.sin(p)*Math.cos(t);np[i+1]=r*Math.sin(p)*Math.sin(t);np[i+2]=r*Math.cos(p);
+  }
+  const nodeGeo=new THREE.BufferGeometry();nodeGeo.setAttribute('position',new THREE.BufferAttribute(np,3));
+  const nodes=new THREE.Points(nodeGeo,new THREE.PointsMaterial({color:0x666677,size:0.18,transparent:true,opacity:0.9}));
+  cluster.add(nodes);
 
-const ringGeo2 = new THREE.TorusGeometry(8.6, 0.04, 16, 100);
-const ringMat2 = new THREE.MeshBasicMaterial({
-  color: 0xcccccc,
-  transparent: true,
-  opacity: 0.5
-});
-const ring2 = new THREE.Mesh(ringGeo2, ringMat2);
-ring2.rotation.y = Math.PI / 3;
-ring2.rotation.x = Math.PI / 6;
-neuralCluster.add(ring2);
-
-// 3. Floating Neural Weights & Synaptic Nodes (Point Cloud)
-const nodeCount = 90;
-const nodePositions = new Float32Array(nodeCount * 3);
-for (let i = 0; i < nodeCount * 3; i += 3) {
-  const r = 3.6 + Math.random() * 5.2;
-  const theta = Math.random() * Math.PI * 2;
-  const phi = Math.acos((Math.random() * 2) - 1);
-  nodePositions[i] = r * Math.sin(phi) * Math.cos(theta);
-  nodePositions[i + 1] = r * Math.sin(phi) * Math.sin(theta);
-  nodePositions[i + 2] = r * Math.cos(phi);
-}
-const nodeGeo = new THREE.BufferGeometry();
-nodeGeo.setAttribute('position', new THREE.BufferAttribute(nodePositions, 3));
-const nodeMat = new THREE.PointsMaterial({
-  color: 0xffffff,
-  size: 0.25,
-  transparent: true,
-  opacity: 0.95
-});
-const neuralNodes = new THREE.Points(nodeGeo, nodeMat);
-neuralCluster.add(neuralNodes);
-
-// 4. Dynamic Synaptic Connections (Lines between nearby nodes)
-const lineMat = new THREE.LineBasicMaterial({
-  color: 0x777788,
-  transparent: true,
-  opacity: 0.35
-});
-const lineGeo = new THREE.BufferGeometry();
-const linePositions = [];
-for (let i = 0; i < nodeCount; i++) {
-  const p1 = new THREE.Vector3(nodePositions[i * 3], nodePositions[i * 3 + 1], nodePositions[i * 3 + 2]);
-  for (let j = i + 1; j < nodeCount; j++) {
-    const p2 = new THREE.Vector3(nodePositions[j * 3], nodePositions[j * 3 + 1], nodePositions[j * 3 + 2]);
-    if (p1.distanceTo(p2) < 2.8) {
-      linePositions.push(p1.x, p1.y, p1.z, p2.x, p2.y, p2.z);
+  // Synaptic connections
+  const lp=[];
+  for(let i=0;i<nc;i++){
+    const p1=new THREE.Vector3(np[i*3],np[i*3+1],np[i*3+2]);
+    for(let j=i+1;j<nc;j++){
+      const p2=new THREE.Vector3(np[j*3],np[j*3+1],np[j*3+2]);
+      if(p1.distanceTo(p2)<3)lp.push(p1.x,p1.y,p1.z,p2.x,p2.y,p2.z);
     }
   }
-}
-lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
-const synapticMesh = new THREE.LineSegments(lineGeo, lineMat);
-neuralCluster.add(synapticMesh);
+  const lg=new THREE.BufferGeometry();lg.setAttribute('position',new THREE.Float32BufferAttribute(lp,3));
+  cluster.add(new THREE.LineSegments(lg,new THREE.LineBasicMaterial({color:0x444454,transparent:true,opacity:0.3})));
 
-// Mouse parallax listener
-let targetRotX = 0;
-let targetRotY = 0;
-function onMouseMove(e) {
-  const rect = container.getBoundingClientRect();
-  const relX = (e.clientX - rect.left) / rect.width - 0.5;
-  const relY = (e.clientY - rect.top) / rect.height - 0.5;
-  targetRotY = relX * 1.5;
-  targetRotX = relY * 1.5;
-}
-window.addEventListener('mousemove', onMouseMove);
+  function getS(){const w=window.innerWidth;if(w<=480)return 0.32;if(w<=768)return 0.48;if(w<=900)return 0.62;return 1;}
+  function pos(){
+    const s=getS(),w=window.innerWidth;
+    const xo=w>900?10:w>768?6:3;
+    cluster.scale.set(s,s,s);cluster.position.set(xo,0,-2);
+    camera.position.set(w>900?1.5:0,0,24);
+  }
+  pos();
 
-function onResize() {
-  const w = container.clientWidth || 400;
-  const h = container.clientHeight || 260;
-  camera.aspect = w / h;
-  camera.updateProjectionMatrix();
-  renderer.setSize(w, h);
-}
-window.addEventListener('resize', onResize);
+  let mx=0,my=0;
+  document.addEventListener('mousemove',e=>{mx=(e.clientX/window.innerWidth-.5)*2;my=-(e.clientY/window.innerHeight-.5)*2;});
+  window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);pos();});
 
-let clock = 0;
-function animate() {
-  requestAnimationFrame(animate);
-  clock += 0.007;
-
-  // Multi-axis algorithmic rotation
-  innerCore.rotation.x = clock * 0.5;
-  innerCore.rotation.y = clock * 0.7;
-
-  outerCore.rotation.x = -clock * 0.3;
-  outerCore.rotation.z = clock * 0.4;
-
-  ring1.rotation.z = clock * 0.6;
-  ring2.rotation.y = -clock * 0.5;
-
-  neuralNodes.rotation.y = clock * 0.2;
-  synapticMesh.rotation.y = clock * 0.2;
-
-  // Smooth mouse damping
-  neuralCluster.rotation.y += (targetRotY - neuralCluster.rotation.y) * 0.06;
-  neuralCluster.rotation.x += (targetRotX - neuralCluster.rotation.x) * 0.06;
-
-  renderer.render(scene, camera);
-}
-animate();
-
+  let clk=0;
+  (function animate(){
+    requestAnimationFrame(animate);clk+=0.006;
+    core1.rotation.x=clk*.5;core1.rotation.y=clk*.7;
+    core2.rotation.x=-clk*.3;core2.rotation.z=clk*.4;
+    ring1.rotation.z=clk*.5;ring2.rotation.y=-clk*.4;
+    nodes.rotation.y=clk*.18;
+    if(window.innerWidth>768){
+      cluster.rotation.y+=(mx*.4-cluster.rotation.y)*.04;
+      cluster.rotation.x+=(my*.4-cluster.rotation.x)*.04;
+    }
+    camera.lookAt(0,0,0);renderer.render(scene,camera);
+  })();
 })();
 </script>
-</div>
-<!-- STITCH_THREEJS_END:ANIMATION_10 -->
-<div class="flex items-center justify-between relative z-10 pointer-events-none">
-<span class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider flex items-center gap-1.5">
-<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
-                • 3D NEURAL TENSOR MESH
-              </span>
-<span class="font-code-sm text-code-sm text-primary font-mono bg-surface-container/80 px-2 py-0.5 rounded border border-surface-container-highest">interactive</span>
-</div>
-<div class="flex items-center justify-between pt-2 relative z-10 mt-auto pointer-events-none">
-<span class="font-code-sm text-code-sm text-on-surface-variant">mouse-reactive parallax</span>
-<span class="font-code-sm text-code-sm text-primary font-medium">rendered client-side</span>
-</div>
-</div>
-</div>
-</div>
-<!-- METRICS BENTO COUNTER BAR -->
-<div class="grid grid-cols-2 lg:grid-cols-5 gap-bento-gap pt-2">
-<div class="p-card-padding-md bg-surface-container-low rounded-xl shadow-sm hover:bg-surface-container transition-colors">
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest block pb-1">Deployments</span>
-<div class="font-headline-lg text-headline-lg text-primary font-semibold tracking-tight">3+</div>
-<p class="font-code-sm text-code-sm text-on-surface-variant pt-1">Models in Production</p>
-</div>
-<div class="p-card-padding-md bg-surface-container-low rounded-xl shadow-sm hover:bg-surface-container transition-colors">
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest block pb-1">Throughput</span>
-<div class="font-headline-lg text-headline-lg text-primary font-semibold tracking-tight">500+</div>
-<p class="font-code-sm text-code-sm text-on-surface-variant pt-1">Daily API Requests</p>
-</div>
-<div class="p-card-padding-md bg-surface-container-low rounded-xl shadow-sm hover:bg-surface-container transition-colors">
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest block pb-1">Impact</span>
-<div class="font-headline-lg text-headline-lg text-primary font-semibold tracking-tight">60%</div>
-<p class="font-code-sm text-code-sm text-on-surface-variant pt-1">Ops Efficiency Gain</p>
-</div>
-<div class="p-card-padding-md bg-surface-container-low rounded-xl shadow-sm hover:bg-surface-container transition-colors">
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest block pb-1">Academic</span>
-<div class="font-headline-lg text-headline-lg text-primary font-semibold tracking-tight">8.0 / 10</div>
-<p class="font-code-sm text-code-sm text-on-surface-variant pt-1">Cumulative CGPA</p>
-</div>
-<div class="col-span-2 lg:col-span-1 p-card-padding-md bg-surface-container-low rounded-xl shadow-sm hover:bg-surface-container transition-colors flex flex-col justify-between">
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest block pb-1">Graduation</span>
-<div class="font-headline-lg text-headline-lg text-primary font-semibold tracking-tight">2026</div>
-<p class="font-code-sm text-code-sm text-on-surface-variant pt-1">B.Tech AI &amp; DS</p>
-</div>
-</div>
-</div>
-</section>
-<!-- SECTION 1: CORE ARCHITECTURE & LIVE ASCII/TENSOR CODING BOX -->
-<section class="relative z-10 w-full max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop py-12 lg:py-20" id="architecture">
-<div class="flex flex-col gap-10">
-<!-- Section Header -->
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-<div>
-<div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Section 01 // Stack</div>
-<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight mt-1">Core Architecture &amp; Engines</h2>
-</div>
-<p class="font-code-sm text-code-sm text-on-surface-variant max-w-md">
-          Hardware acceleration, neural pipelines, agentic graphs, and continuous model lifecycle infrastructure.
-        </p>
-</div>
-<!-- Categorized Bento Matrix -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-bento-gap">
-<!-- Category: LLM & Agentic Systems -->
-<div class="p-card-padding-md bg-surface-container-low rounded-xl shadow-sm flex flex-col justify-between">
-<div>
-<div class="flex items-center justify-between pb-4">
-<span class="font-code-sm text-code-sm text-primary font-medium">01. Agentic LLMs</span>
-<span class="material-symbols-outlined text-on-surface-variant text-[20px]">psychology</span>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6">
-              Deterministic state-machines, memory serialization, retrieval synthesis, and streaming agents.
-            </p>
-</div>
-<div class="flex flex-wrap gap-2 pt-2">
-<span class="interactive px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-code-sm text-code-sm transition-all hover:bg-surface-bright" data-color="#38bdf8">LangChain</span>
-<span class="interactive px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-code-sm text-code-sm transition-all hover:bg-surface-bright" data-color="#60a5fa">LangGraph</span>
-<span class="interactive px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-code-sm text-code-sm transition-all hover:bg-surface-bright" data-color="#4ade80">RAG Pipelines</span>
-<span class="interactive px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-code-sm text-code-sm transition-all hover:bg-surface-bright" data-color="#f97316">Groq / LLM APIs</span>
-</div>
-</div>
-<!-- Category: Deep Learning & Vision -->
-<div class="p-card-padding-md bg-surface-container-low rounded-xl shadow-sm flex flex-col justify-between">
-<div>
-<div class="flex items-center justify-between pb-4">
-<span class="font-code-sm text-code-sm text-primary font-medium">02. Vision &amp; Deep Learning</span>
-<span class="material-symbols-outlined text-on-surface-variant text-[20px]">visibility</span>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6">
-              Facial embeddings, CNN architectures, real-time edge frame processing, and feature extraction.
-            </p>
-</div>
-<div class="flex flex-wrap gap-2 pt-2">
-<span class="interactive px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-code-sm text-code-sm transition-all hover:bg-surface-bright" data-color="#fb923c">TensorFlow</span>
-<span class="interactive px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-code-sm text-code-sm transition-all hover:bg-surface-bright" data-color="#34d399">Scikit-learn</span>
-<span class="interactive px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-code-sm text-code-sm transition-all hover:bg-surface-bright" data-color="#a78bfa">OpenCV + dlib</span>
-<span class="interactive px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-code-sm text-code-sm transition-all hover:bg-surface-bright" data-color="#38bdf8">NumPy / Pandas</span>
-</div>
-</div>
-<!-- Category: Backend & Serving APIs -->
-<div class="p-card-padding-md bg-surface-container-low rounded-xl shadow-sm flex flex-col justify-between">
-<div>
-<div class="flex items-center justify-between pb-4">
-<span class="font-code-sm text-code-sm text-primary font-medium">03. API &amp; Microservices</span>
-<span class="material-symbols-outlined text-on-surface-variant text-[20px]">dns</span>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6">
-              High-concurrency async endpoints, relational datastores, low-overhead microservices.
-            </p>
-</div>
-<div class="flex flex-wrap gap-2 pt-2">
-<span class="interactive px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-code-sm text-code-sm transition-all hover:bg-surface-bright" data-color="#2dd4bf">FastAPI</span>
-<span class="interactive px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-code-sm text-code-sm transition-all hover:bg-surface-bright" data-color="#f43f5e">Flask</span>
-<span class="interactive px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-code-sm text-code-sm transition-all hover:bg-surface-bright" data-color="#38bdf8">MySQL</span>
-<span class="interactive px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-code-sm text-code-sm transition-all hover:bg-surface-bright" data-color="#fbbf24">Python 3.11</span>
-</div>
-</div>
-<!-- Category: Cloud & Embedded -->
-<div class="p-card-padding-md bg-surface-container-low rounded-xl shadow-sm flex flex-col justify-between">
-<div>
-<div class="flex items-center justify-between pb-4">
-<span class="font-code-sm text-code-sm text-primary font-medium">04. Cloud &amp; Embedded</span>
-<span class="material-symbols-outlined text-on-surface-variant text-[20px]">memory</span>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6">
-              Container deployment, native system programming, hardware interfaces, and schematics.
-            </p>
-</div>
-<div class="flex flex-wrap gap-2 pt-2">
-<span class="interactive px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-code-sm text-code-sm transition-all hover:bg-surface-bright" data-color="#22d3ee">Docker/Linux</span>
-<span class="interactive px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-code-sm text-code-sm transition-all hover:bg-surface-bright" data-color="#a855f7">Render</span>
-<span class="interactive px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-code-sm text-code-sm transition-all hover:bg-surface-bright" data-color="#f87171">C/C++</span>
-<span class="interactive px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-code-sm text-code-sm transition-all hover:bg-surface-bright" data-color="#e2e8f0">SQL</span>
-</div>
-</div>
-</div>
-<!-- LIVE ASCII NEURAL GRAPH & LIVE KERNEL STREAM CODING BOX -->
-<div class="w-full bg-surface-container-lowest rounded-xl border border-surface-container-high shadow-2xl overflow-hidden mt-2">
-<div class="bg-surface-container-low px-4 py-3 flex items-center justify-between border-b border-surface-container-high">
-<div class="flex items-center gap-3">
-<div class="flex items-center gap-1.5">
-<span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></span>
-<span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></span>
-<span class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></span>
-</div>
-<span class="font-mono text-xs text-on-surface-variant font-medium tracking-tight ml-2">ascii_kernel_telemetry.py // LangGraph_State_Engine</span>
-</div>
-<div class="flex items-center gap-3 font-mono text-xs">
-<span class="flex items-center gap-1.5 text-primary">
-<span class="inline-block w-2 h-2 rounded-full bg-primary animate-ping"></span>
-        DEMO
-      </span>
-<span class="text-on-surface-variant border-l border-surface-container-highest pl-3 hidden sm:inline">illustrative visualization</span>
-</div>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-12 font-mono">
-<!-- Left: ASCII Neural Graph & Real-time Attention Matrix -->
-<div class="lg:col-span-6 p-4 lg:p-5 border-b lg:border-b-0 lg:border-r border-surface-container-high bg-surface-container-lowest">
-<div class="flex items-center justify-between mb-3 text-xs text-on-surface-variant">
-<span class="font-label-caps uppercase text-primary tracking-wider">// ASCII Neural Attention Map</span>
-<span class="font-mono text-[11px] text-on-surface-variant" id="ascii-clock">FRAME: 0284</span>
-</div>
-<pre class="font-mono text-[11px] sm:text-[12px] leading-tight text-on-surface tracking-wider bg-surface-container-low/40 p-3 rounded border border-surface-container-high/60 overflow-x-auto select-none" id="ascii-neural-canvas">      [INPUT TOKENS]
-         │     │     │
-       ┌─┴─┐ ┌─┴─┐ ┌─┴─┐      ┌─── STATE GRAPH ───┐
-  Q:   [░░░] [▒▒▒] [███]  ──▶ │ LangGraph Node: 01│
-  K:   [▒▒▒] [███] [░░░]  ──▶ │ Flash Attention 2 │
-  V:   [███] [░░░] [▒▒▒]  ──▶ │ Softmax Head 8/16 │
-       └───┬─┴───┬─┴───┘      └───────────────────┘
-           │     │                     │
-           ▼     ▼                     ▼
-      [TENSOR EMBEDDING: dim=4096, sparsity=0.04]
-      [████████████░░░░░░░░░░]  58.4% Compressed
-      </pre>
-<div class="mt-3 grid grid-cols-3 gap-2 text-center text-[11px] text-on-surface-variant">
-<div class="p-2 rounded bg-surface-container-low border border-surface-container-highest/60">
-<span class="block text-primary font-semibold" id="token-rate-counter">482 t/s</span>
-<span class="text-[10px] uppercase">Token Rate</span>
-</div>
-<div class="p-2 rounded bg-surface-container-low border border-surface-container-highest/60">
-<span class="block text-primary font-semibold">128k</span>
-<span class="text-[10px] uppercase">Context Win</span>
-</div>
-<div class="p-2 rounded bg-surface-container-low border border-surface-container-highest/60">
-<span class="block text-primary font-semibold" id="loss-counter">0.0142</span>
-<span class="text-[10px] uppercase">Eval Loss</span>
-</div>
-</div>
-</div>
-<!-- Right: Live Simulation Stream & Dynamic Weight Matrix -->
-<div class="lg:col-span-6 p-4 lg:p-5 flex flex-col justify-between bg-surface-container-low/20">
-<div class="flex items-center justify-between mb-3 text-xs text-on-surface-variant">
-<span class="font-label-caps uppercase text-primary tracking-wider">// Live Inference Pipeline Log</span>
-<span class="font-mono text-[11px] text-on-surface-variant">Groq Llama-3-70B</span>
-</div>
-<div class="font-mono text-[11px] sm:text-[12px] space-y-1.5 text-on-surface-variant leading-relaxed h-[170px] overflow-hidden relative" id="terminal-stream-log">
-<p class="text-on-surface"><span class="text-primary font-semibold">[KERNEL]</span> Initializing state machine &lt;AgentExecutor: LangGraph&gt;</p>
-<p><span class="text-on-surface-variant">[AGENT]</span> Query vector dispatched to Pinecone index (Top-k: 5)</p>
-<p><span class="text-on-surface-variant">[TENSOR]</span> FlashAttention forward pass completed in 6.4ms</p>
-<p class="text-primary font-medium">[INFERENCE] Token stream: "Generating deterministic response payload..."</p>
-<p class="text-on-surface-variant">[MEMORY] SlidingWindowBuffer updated: 42 tokens committed</p>
-<p class="text-primary font-semibold">[PROD] 200 OK — Model serving healthy at edge node.</p>
-</div>
-<div class="pt-3 border-t border-surface-container-high/60 flex items-center justify-between text-xs text-on-surface-variant">
-<span class="flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
-<span>Buffer: <strong class="text-primary">100% synchronized</strong></span>
-</span>
-<button class="interactive px-2.5 py-1 rounded bg-surface-container-high hover:bg-surface-bright text-primary font-mono text-[11px] transition-colors" data-color="#ffffff" id="toggle-stream-btn">
-          Inject Packet
-        </button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- SECTION 2: FEATURED PROJECTS (CASE STUDIES) -->
-<section class="relative z-10 w-full max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop py-12 lg:py-20" id="featured-projects">
-<div class="flex flex-col gap-10">
-<!-- Section Header -->
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-<div>
-<div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Section 02 // Engineering Cases</div>
-<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight mt-1">Featured Production Systems</h2>
-</div>
-<span class="font-code-sm text-code-sm text-on-surface-variant">5 Systems Deployed • Production Scale</span>
-</div>
-<!-- Projects Stack -->
-<div class="flex flex-col gap-6">
-<!-- Project 1: AI Conversational Agent -->
-<article class="p-card-padding-md lg:p-card-padding-lg bg-surface-container-low rounded-xl shadow-md hover:bg-surface-container transition-all group">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-<div class="lg:col-span-7 flex flex-col gap-4">
-<div class="flex items-center gap-3">
-<span class="px-2 py-0.5 rounded bg-surface-container-highest font-code-sm text-code-sm text-primary font-medium">01</span>
-<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container font-label-caps text-label-caps text-on-surface uppercase">
-<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-                  Live LLM Pipeline
-                </span>
-</div>
-<h3 class="font-headline-md text-headline-md text-primary font-semibold group-hover:text-primary transition-colors">
-                AI Conversational Agent
-              </h3>
-<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                Engineered an ultra-low-latency conversational framework combining Groq's high-speed inference engine with LangChain and LangGraph for memory preservation and recursive tool-calling. Features continuous session synthesis via ConversationBufferMemory and interactive Streamlit UI.
-              </p>
-<div class="flex flex-wrap gap-2 pt-1">
-<span class="font-code-sm text-code-sm px-2.5 py-1 rounded bg-surface-container-high text-on-surface">LangChain</span>
-<span class="font-code-sm text-code-sm px-2.5 py-1 rounded bg-surface-container-high text-on-surface">Groq Cloud</span>
-<span class="font-code-sm text-code-sm px-2.5 py-1 rounded bg-surface-container-high text-on-surface">Streamlit</span>
-<span class="font-code-sm text-code-sm px-2.5 py-1 rounded bg-surface-container-high text-on-surface">ConvBufferMemory</span>
-</div>
-</div>
-<div class="lg:col-span-5 flex flex-col justify-between bg-surface-container-lowest p-card-padding-md rounded-lg gap-4">
-<div class="flex items-center justify-between pb-2">
-<span class="font-label-caps text-label-caps uppercase text-on-surface-variant">Architecture</span>
-<span class="font-code-sm text-code-sm text-primary">Groq LPU Inference</span>
-</div>
-<div class="space-y-2 font-code-sm text-code-sm text-on-surface-variant">
-<div class="flex justify-between">
-<span>Context Preservation</span>
-<span class="text-primary font-medium">Stateful</span>
-</div>
-<div class="flex justify-between">
-<span>Inference Style</span>
-<span class="text-primary font-medium">Streaming</span>
-</div>
-<div class="flex justify-between">
-<span>Memory Architecture</span>
-<span class="text-primary font-medium">Sliding Window Buffer</span>
-</div>
-</div>
-<div class="flex items-center gap-3 pt-3">
-<a class="interactive inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-surface-container text-on-surface font-code-sm text-code-sm hover:text-primary transition-colors" data-color="#FFFFFF" href="https://github.com/jitendra205saini" rel="noopener noreferrer" target="_blank">
-<span class="material-symbols-outlined text-[16px]">code</span>
-<span>Repository</span>
-</a>
-</div>
-</div>
-</div>
-</article>
-<!-- Project 2: Real-Time Face Recognition Attendance Engine -->
-<article class="p-card-padding-md lg:p-card-padding-lg bg-surface-container-low rounded-xl shadow-md hover:bg-surface-container transition-all group">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-<div class="lg:col-span-7 flex flex-col gap-4">
-<div class="flex items-center gap-3">
-<span class="px-2 py-0.5 rounded bg-surface-container-highest font-code-sm text-code-sm text-primary font-medium">02</span>
-<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container font-label-caps text-label-caps text-on-surface uppercase">
-<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-                  Computer Vision • Edge Engine
-                </span>
-</div>
-<h3 class="font-headline-md text-headline-md text-primary font-semibold group-hover:text-primary transition-colors">
-                Real-Time Face Recognition Attendance Engine
-              </h3>
-<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                Architected an edge computer vision pipeline detecting, vectorizing, and authenticating 68 facial landmarks at 30+ FPS. Incorporates Dlib deep metric learning models with automatic relational session persistence into MySQL without jitter or duplicate registers.
-              </p>
-<div class="flex flex-wrap gap-2 pt-1">
-<span class="font-code-sm text-code-sm px-2.5 py-1 rounded bg-surface-container-high text-on-surface">OpenCV</span>
-<span class="font-code-sm text-code-sm px-2.5 py-1 rounded bg-surface-container-high text-on-surface">dlib (HOG + ResNet)</span>
-<span class="font-code-sm text-code-sm px-2.5 py-1 rounded bg-surface-container-high text-on-surface">MySQL</span>
-<span class="font-code-sm text-code-sm px-2.5 py-1 rounded bg-surface-container-high text-on-surface">Python 3</span>
-</div>
-</div>
-<div class="lg:col-span-5 flex flex-col justify-between bg-surface-container-lowest p-card-padding-md rounded-lg gap-4">
-<div class="flex items-center justify-between pb-2">
-<span class="font-label-caps text-label-caps uppercase text-on-surface-variant">Pipeline Metrics</span>
-<span class="font-code-sm text-code-sm text-primary">Real-Time Pipeline</span>
-</div>
-<div class="space-y-2 font-code-sm text-code-sm text-on-surface-variant">
-<div class="flex justify-between">
-<span>Recognition Model</span>
-<span class="text-primary font-medium">dlib ResNet</span>
-</div>
-<div class="flex justify-between">
-<span>Landmark Detection</span>
-<span class="text-primary font-medium">68 Keypoints</span>
-</div>
-<div class="flex justify-between">
-<span>Persistence</span>
-<span class="text-primary font-medium">MySQL</span>
-</div>
-</div>
-<div class="flex items-center gap-3 pt-3">
-<a class="interactive inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-surface-container text-on-surface font-code-sm text-code-sm hover:text-primary transition-colors" data-color="#FAFAFA" href="https://github.com/jitendra205saini" rel="noopener noreferrer" target="_blank">
-<span class="material-symbols-outlined text-[16px]">code</span>
-<span>View Source</span>
-</a>
-</div>
-</div>
-</div>
-</article>
-<!-- Project 3: Image Classification Deep Learning Pipeline -->
-<article class="p-card-padding-md lg:p-card-padding-lg bg-surface-container-low rounded-xl shadow-md hover:bg-surface-container transition-all group">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-<div class="lg:col-span-7 flex flex-col gap-4">
-<div class="flex items-center gap-3">
-<span class="px-2 py-0.5 rounded bg-surface-container-highest font-code-sm text-code-sm text-primary font-medium">03</span>
-<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container font-label-caps text-label-caps text-on-surface uppercase">
-<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-                  Deep Learning • CNN
-                </span>
-</div>
-<h3 class="font-headline-md text-headline-md text-primary font-semibold group-hover:text-primary transition-colors">
-                Image Classification — Deep Learning Pipeline
-              </h3>
-<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                End-to-end convolutional neural network pipeline built with TensorFlow and Keras. Includes automated data augmentation workflows, learning rate scheduler with early stopping, confusion matrix evaluations, and weights export for embedded edge serving.
-              </p>
-<div class="flex flex-wrap gap-2 pt-1">
-<span class="font-code-sm text-code-sm px-2.5 py-1 rounded bg-surface-container-high text-on-surface">TensorFlow</span>
-<span class="font-code-sm text-code-sm px-2.5 py-1 rounded bg-surface-container-high text-on-surface">Keras</span>
-<span class="font-code-sm text-code-sm px-2.5 py-1 rounded bg-surface-container-high text-on-surface">NumPy</span>
-<span class="font-code-sm text-code-sm px-2.5 py-1 rounded bg-surface-container-high text-on-surface">Matplotlib</span>
-</div>
-</div>
-<div class="lg:col-span-5 flex flex-col justify-between bg-surface-container-lowest p-card-padding-md rounded-lg gap-4">
-<div class="flex items-center justify-between pb-2">
-<span class="font-label-caps text-label-caps uppercase text-on-surface-variant">Diagnostics</span>
-<span class="font-code-sm text-code-sm text-primary">CNN Pipeline</span>
-</div>
-<div class="space-y-2 font-code-sm text-code-sm text-on-surface-variant">
-<div class="flex justify-between">
-<span>Regularisation</span>
-<span class="text-primary font-medium">Dropout + BatchNorm</span>
-</div>
-<div class="flex justify-between">
-<span>Interpretability</span>
-<span class="text-primary font-medium">Class Activation Maps</span>
-</div>
-<div class="flex justify-between">
-<span>Diagnostics</span>
-<span class="text-primary font-medium">Confusion Matrix</span>
-</div>
-</div>
-<div class="flex items-center gap-3 pt-3">
-<a class="interactive inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-surface-container text-on-surface font-code-sm text-code-sm hover:text-primary transition-colors" data-color="#FAFAFA" href="https://github.com/jitendra205saini" rel="noopener noreferrer" target="_blank">
-<span class="material-symbols-outlined text-[16px]">terminal</span>
-<span>Inspect Weights</span>
-</a>
-</div>
-</div>
-</div>
-</article>
-<!-- Project 4 & 5 Grid Pair -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<!-- Project 4: Data Analytics Dashboard & NLP -->
-<article class="p-card-padding-md bg-surface-container-low rounded-xl shadow-md flex flex-col justify-between group hover:bg-surface-container transition-all">
-<div class="flex flex-col gap-4">
-<div class="flex items-center justify-between">
-<span class="px-2 py-0.5 rounded bg-surface-container-highest font-code-sm text-code-sm text-primary font-medium">04</span>
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">NLP • Analytics</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary font-semibold">
-                Data Analytics Dashboard &amp; NLP Text Classifier
-              </h3>
-<p class="font-body-md text-body-md text-on-surface-variant">
-                Automated sentiment &amp; topic classification system with tokenized TF-IDF feature extractions, interactive statistical visualizers via Flask, and persistent cloud deployment on Render.
-              </p>
-<div class="flex flex-wrap gap-2">
-<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface">Pandas</span>
-<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface">Scikit-learn</span>
-<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface">Flask</span>
-<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface">Render</span>
-</div>
-</div>
-<div class="pt-6 flex items-center justify-between">
-<span class="font-code-sm text-code-sm text-primary font-medium">TF-IDF + Logistic Regression</span>
-<a class="interactive font-code-sm text-code-sm text-on-surface-variant hover:text-primary flex items-center gap-1" href="https://github.com/jitendra205saini" rel="noopener noreferrer" target="_blank">
-<span>View Notebook</span>
-<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</div>
-</article>
-<!-- Project 5: IoT Smart Sensor Monitoring System -->
-<article class="p-card-padding-md bg-surface-container-low rounded-xl shadow-md flex flex-col justify-between group hover:bg-surface-container transition-all">
-<div class="flex flex-col gap-4">
-<div class="flex items-center justify-between">
-<span class="px-2 py-0.5 rounded bg-surface-container-highest font-code-sm text-code-sm text-primary font-medium">05</span>
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Embedded • IoT</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary font-semibold">
-                IoT Smart Sensor Monitoring System
-              </h3>
-<p class="font-body-md text-body-md text-on-surface-variant">
-                Custom microcontroller firmware designed for low-power edge telemetry ingestion. Schematics printed via EasyEDA and enclosures engineered in Autodesk Fusion 360 with UART serial telemetry streaming.
-              </p>
-<div class="flex flex-wrap gap-2">
-<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface">Arduino</span>
-<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface">C/C++</span>
-<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface">EasyEDA</span>
-<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface">Fusion 360</span>
-</div>
-</div>
-<div class="pt-6 flex items-center justify-between">
-<span class="font-code-sm text-code-sm text-primary font-medium">Arduino + PCB + CAD</span>
-<a class="interactive font-code-sm text-code-sm text-on-surface-variant hover:text-primary flex items-center gap-1" href="https://github.com/jitendra205saini" rel="noopener noreferrer" target="_blank">
-<span>Schematics</span>
-<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</div>
-</article>
-</div>
-</div>
-</div>
-</section>
-<!-- SECTION 3: EXPERIENCE, EDUCATION & CERTIFICATIONS -->
-<section class="relative z-10 w-full max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop py-12 lg:py-20" id="experience">
-<div class="flex flex-col gap-10">
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-<div>
-<div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Section 03 // Track Record</div>
-<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight mt-1">Experience &amp; Credentials</h2>
-</div>
-<span class="font-code-sm text-code-sm text-on-surface-variant">Verified Career Progression</span>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-<!-- Left: Timeline of Work Experience & Education -->
-<div class="lg:col-span-8 flex flex-col gap-6">
-<!-- Experience Card: AbyM Technology -->
-<div class="p-card-padding-md lg:p-card-padding-lg bg-surface-container-low rounded-xl shadow-md flex flex-col gap-4 relative overflow-hidden">
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-<div>
-<span class="font-label-caps text-label-caps text-on-surface uppercase tracking-wider">Production Internship</span>
-<h3 class="font-headline-md text-headline-md text-primary font-semibold pt-1">
-                  AI Developer Intern — AbyM Technology Pvt. Ltd.
-                </h3>
-</div>
-<span class="font-code-sm text-code-sm px-2.5 py-1 rounded bg-surface-container text-on-surface-variant self-start sm:self-center">
-                Jul 2025 – Sep 2025
-              </span>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-              Spearheaded design and deployment of multi-agent LLM systems for enterprise client workflows. Architected FastAPI REST services to interface with LangChain and LangGraph state-machines, boosting operational task completion by 60%. Handled complete CI/CD rollout on Render and Vercel environments.
-            </p>
-<div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2">
-<div class="p-2 bg-surface-container rounded font-code-sm text-code-sm">
-<span class="text-on-surface-variant block text-[11px]">Backend</span>
-<span class="text-primary font-medium">FastAPI</span>
-</div>
-<div class="p-2 bg-surface-container rounded font-code-sm text-code-sm">
-<span class="text-on-surface-variant block text-[11px]">Orchestration</span>
-<span class="text-primary font-medium">LangGraph</span>
-</div>
-<div class="p-2 bg-surface-container rounded font-code-sm text-code-sm">
-<span class="text-on-surface-variant block text-[11px]">Deployments</span>
-<span class="text-primary font-medium">Render/Vercel</span>
-</div>
-<div class="p-2 bg-surface-container rounded font-code-sm text-code-sm">
-<span class="text-on-surface-variant block text-[11px]">Efficiency</span>
-<span class="text-primary font-medium">+60% Yield</span>
-</div>
-</div>
-</div>
-<!-- Education Card: Arya College RTU -->
-<div class="p-card-padding-md lg:p-card-padding-lg bg-surface-container-low rounded-xl shadow-md flex flex-col gap-4">
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-<div>
-<span class="font-label-caps text-label-caps text-on-surface uppercase tracking-wider">Undergraduate Degree</span>
-<h3 class="font-headline-md text-headline-md text-primary font-semibold pt-1">
-                  B.Tech — Artificial Intelligence &amp; Data Science
-                </h3>
-<p class="font-code-sm text-code-sm text-on-surface-variant pt-0.5">Arya College of Engineering &amp; IT (RTU)</p>
-</div>
-<span class="font-code-sm text-code-sm px-2.5 py-1 rounded bg-surface-container text-on-surface-variant self-start sm:self-center">
-                2022 – 2026
-              </span>
-</div>
-<div class="flex items-center gap-6 pt-2">
-<div class="flex items-baseline gap-2">
-<span class="font-headline-md text-headline-md font-semibold text-primary">8.0</span>
-<span class="font-code-sm text-code-sm text-on-surface-variant">/ 10 CGPA</span>
-</div>
-<div class="w-px h-8 bg-surface-container-highest"></div>
-<p class="font-body-md text-body-md text-on-surface-variant">
-                Core coursework in Neural Networks, Operating Systems, Advanced Algorithms, and Machine Learning Systems Design.
-              </p>
-</div>
-</div>
-</div>
-<!-- Right: Certifications & Academic Accreditations -->
-<div class="lg:col-span-4 flex flex-col gap-4">
-<div class="p-card-padding-md bg-surface-container-low rounded-xl shadow-md h-full flex flex-col justify-between">
-<div>
-<div class="flex items-center justify-between pb-4">
-<span class="font-label-caps text-label-caps uppercase text-on-surface-variant">Accreditations</span>
-<span class="material-symbols-outlined text-primary text-[20px]">verified</span>
-</div>
-<div class="space-y-4">
-<div class="p-3 bg-surface-container rounded-lg">
-<span class="font-code-sm text-code-sm text-primary font-medium block">AbyM Technology Completion</span>
-<p class="font-code-sm text-code-sm text-on-surface-variant pt-1">Production AI Systems &amp; LLM Service Architecture Certificate</p>
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider block mt-2">OCT 2025</span>
-</div>
-<div class="p-3 bg-surface-container rounded-lg">
-<span class="font-code-sm text-code-sm text-primary font-medium block">Advanced C/C++ Programming</span>
-<p class="font-code-sm text-code-sm text-on-surface-variant pt-1">Spoken Tutorial, IIT Bombay</p>
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider block mt-2">2023</span>
-</div>
-</div>
-</div>
-<div class="pt-6">
-<a class="interactive w-full py-2 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface text-center font-code-sm text-code-sm block transition-colors" href="#contact">
-                Request Credential Vault
-              </a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- SECTION 4: INTERACTIVE DEVELOPER TERMINAL / CONTACT MODULE -->
-<section class="relative z-10 w-full max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop py-12 lg:py-24" id="contact">
-<div class="flex flex-col gap-10">
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-<div>
-<div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Section 04 // Connect</div>
-<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight mt-1">Terminal Shell &amp; Dispatch</h2>
-</div>
-<span class="font-code-sm text-code-sm text-on-surface-variant">Interactive Bash Session • Direct Query</span>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-<!-- Live Terminal Window -->
-<div class="lg:col-span-7 bg-surface-container-lowest rounded-xl shadow-2xl overflow-hidden flex flex-col">
-<!-- Terminal Header Bar -->
-<div class="bg-surface-container-low px-4 py-3 flex items-center justify-between">
-<div class="flex items-center gap-2">
-<span class="w-3 h-3 rounded-full bg-surface-variant inline-block"></span>
-<span class="w-3 h-3 rounded-full bg-surface-variant inline-block"></span>
-<span class="w-3 h-3 rounded-full bg-surface-variant inline-block"></span>
-<span class="font-code-sm text-code-sm text-on-surface-variant ml-3 font-mono">jks@ml-node-01:~</span>
-</div>
-<span class="font-code-sm text-code-sm text-on-surface-variant font-mono">zsh 5.9</span>
-</div>
-<!-- Terminal Screen Body -->
-<div class="p-card-padding-md lg:p-card-padding-lg font-code-base text-code-base space-y-4 font-mono leading-relaxed" id="terminal-screen">
-<div>
-<span class="text-on-surface-variant">jks@ml-node-01:~$</span> <span class="text-primary">whoami</span>
-<p class="text-on-surface pl-2 pt-1">&gt; Jitendra Kumar Saini • AI/ML Systems Engineer &amp; LLM Architect</p>
-</div>
-<div>
-<span class="text-on-surface-variant">jks@ml-node-01:~$</span> <span class="text-primary">cat location.txt</span>
-<p class="text-on-surface pl-2 pt-1">&gt; Jaipur, Rajasthan, India [Ready to Relocate / Remote Active]</p>
-</div>
-<div>
-<span class="text-on-surface-variant">jks@ml-node-01:~$</span> <span class="text-primary">echo $EMAIL</span>
-<div class="pl-2 pt-1 flex items-center gap-3">
-<span class="text-primary font-semibold" id="contact-email">Jitendra205saini@gmail.com</span>
-<button class="interactive inline-flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors text-code-sm" data-color="#FAFAFA" id="copy-email-btn">
-<span class="material-symbols-outlined text-[16px]" id="copy-icon">content_copy</span>
-<span id="copy-status">copy</span>
-</button>
-</div>
-</div>
-<div class="pt-2">
-<span class="text-on-surface-variant">jks@ml-node-01:~$</span> <span class="text-primary">./query_status.sh</span>
-<p class="text-on-surface-variant pl-2 pt-1">&gt; Open for Engineering Roles (AI/ML, Python Backend, LLM Systems)...</p>
-<div class="flex items-center gap-2 pl-2 pt-2">
-<span class="w-2 h-4 bg-primary inline-block animate-pulse"></span>
-<span class="text-on-surface-variant text-code-sm">type commands or copy email above</span>
-</div>
-</div>
-</div>
-<!-- Interactive Command Prompt Input -->
-<div class="p-3 bg-surface-container-low flex items-center gap-2">
-<span class="font-code-sm text-code-sm text-on-surface-variant font-mono">cmd:</span>
-<input class="w-full bg-transparent text-primary font-code-sm text-code-sm outline-none placeholder:text-on-surface-variant/40" id="terminal-input" placeholder="try: skills, github, clear..." type="text"/>
-<span class="font-code-sm text-code-sm text-on-surface-variant uppercase px-2 py-0.5 rounded bg-surface-container">Enter</span>
-</div>
-</div>
-<!-- Direct Social Radar & Quick Dispatch -->
-<div class="lg:col-span-5 flex flex-col justify-between gap-6">
-<div class="p-card-padding-md lg:p-card-padding-lg bg-surface-container-low rounded-xl shadow-md flex flex-col gap-6">
-<div>
-<span class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider">Social Coordinates</span>
-<h3 class="font-headline-sm text-headline-sm text-primary font-semibold pt-1">Developer Profiles</h3>
-<p class="font-body-md text-body-md text-on-surface-variant pt-2">
-                Explore open source repositories, competitive programming ranks, model weights, and benchmark kernels.
-              </p>
-</div>
-<!-- Social Links Grid with Brand Aura Colors -->
-<div class="flex flex-col gap-2.5">
-<a class="interactive flex items-center justify-between p-3 rounded-lg bg-surface-container hover:bg-surface-bright transition-all group" data-color="#FAFAFA" href="https://github.com/jitendra205saini" rel="noopener noreferrer" target="_blank">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary text-[20px]">code</span>
-<span class="font-code-sm text-code-sm text-primary font-medium">GitHub</span>
-</div>
-<span class="font-code-sm text-code-sm text-on-surface-variant group-hover:text-primary transition-colors">github.com/jitendra205saini</span>
-</a>
-<a class="interactive flex items-center justify-between p-3 rounded-lg bg-surface-container hover:bg-surface-bright transition-all group" data-color="#0a66c2" href="https://www.linkedin.com/in/jitendarkumarsaini25/" rel="noopener noreferrer" target="_blank">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary text-[20px]">badge</span>
-<span class="font-code-sm text-code-sm text-primary font-medium">LinkedIn</span>
-</div>
-<span class="font-code-sm text-code-sm text-on-surface-variant group-hover:text-primary transition-colors">linkedin.com/in/jitendarkumarsaini25</span>
-</a>
-<a class="interactive flex items-center justify-between p-3 rounded-lg bg-surface-container hover:bg-surface-bright transition-all group" data-color="#20beff" href="https://www.kaggle.com/jitendrakumarsaini25" rel="noopener noreferrer" target="_blank">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary text-[20px]">analytics</span>
-<span class="font-code-sm text-code-sm text-primary font-medium">Kaggle</span>
-</div>
-<span class="font-code-sm text-code-sm text-on-surface-variant group-hover:text-primary transition-colors">kaggle.com/jitendrakumarsaini25</span>
-</a>
-<a class="interactive flex items-center justify-between p-3 rounded-lg bg-surface-container hover:bg-surface-bright transition-all group" data-color="#ffd21e" href="https://huggingface.co/jitendra25" rel="noopener noreferrer" target="_blank">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary text-[20px]">smart_toy</span>
-<span class="font-code-sm text-code-sm text-primary font-medium">HuggingFace</span>
-</div>
-<span class="font-code-sm text-code-sm text-on-surface-variant group-hover:text-primary transition-colors">huggingface.co/jitendra25</span>
-</a>
-<a class="interactive flex items-center justify-between p-3 rounded-lg bg-surface-container hover:bg-surface-bright transition-all group" data-color="#00ea64" href="https://www.hackerrank.com/profile/jitendra205saini" rel="noopener noreferrer" target="_blank">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary text-[20px]">terminal</span>
-<span class="font-code-sm text-code-sm text-primary font-medium">HackerRank</span>
-</div>
-<span class="font-code-sm text-code-sm text-on-surface-variant group-hover:text-primary transition-colors">hackerrank.com/profile/jitendra205saini</span>
-</a>
-</div>
-</div>
-<!-- Direct Dispatch Quick Trigger -->
-<div class="p-card-padding-md bg-surface-container-low rounded-xl shadow-md flex items-center justify-between">
-<div>
-<span class="font-code-sm text-code-sm text-primary font-medium block">Direct Dispatch</span>
-<span class="font-code-sm text-code-sm text-on-surface-variant">Jitendra205saini@gmail.com</span>
-</div>
-<a class="interactive px-4 py-2 rounded bg-primary text-on-primary font-code-sm text-code-sm font-medium hover:bg-primary-fixed transition-colors" data-color="#FAFAFA" href="mailto:Jitendra205saini@gmail.com">
-              Send Transmission
-            </a>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- SCRIPT: CANVAS PARTICLES, TERMINAL COMMANDS, LIVE ASCII SIMULATION, DUAL-LAYER CURSOR GLOW -->
+
+<!-- ══ CUSTOM CURSOR ══ -->
 <script>
-    (function () {
-      // 1. NEURAL MESH PARTICLES CANVAS (Subtle Background Geometry)
-      const canvas = document.getElementById('neural-mesh-canvas');
-      if (canvas) {
-        const ctx = canvas.getContext('2d');
-        let width = (canvas.width = window.innerWidth);
-        let height = (canvas.height = window.innerHeight);
+(function(){
+  if(!window.matchMedia('(pointer:fine)').matches)return;
+  const dot=document.getElementById('cur-dot'),ring=document.getElementById('cur-ring');
+  let mx=0,my=0,rx=0,ry=0,isH=false;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+  (function tick(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
+  function h2r(hex,a){hex=hex.replace('#','');if(hex.length===3)hex=hex.split('').map(c=>c+c).join('');const r=parseInt(hex.slice(0,2),16),g=parseInt(hex.slice(2,4),16),b=parseInt(hex.slice(4,6),16);return`rgba(${r},${g},${b},${a})`;}
+  function applyH(c){const sc=c==='#000000'?'#888':c;ring.style.transform='translate(-50%,-50%) scale(1.8)';ring.style.borderColor=sc;ring.style.boxShadow=`0 0 18px ${h2r(sc,.65)},inset 0 0 10px ${h2r(sc,.12)}`;}
+  function resetH(){isH=false;ring.style.transform='translate(-50%,-50%) scale(1)';ring.style.borderColor='rgba(255,255,255,0.4)';ring.style.boxShadow='none';}
+  document.querySelectorAll('[data-color]').forEach(el=>{
+    const c=el.getAttribute('data-color');
+    el.addEventListener('mouseenter',()=>{isH=true;applyH(c);const sc=c==='#000000'?'#888':c;el.style.transition='box-shadow 0.3s';el.style.boxShadow=`0 0 22px ${h2r(sc,.2)}`;});
+    el.addEventListener('mouseleave',()=>{el.style.boxShadow='';resetH();});
+  });
+  document.querySelectorAll('a:not([data-color]),button:not([data-color])').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{if(!isH){ring.style.transform='translate(-50%,-50%) scale(1.4)';ring.style.borderColor='rgba(255,255,255,0.6)';}});
+    el.addEventListener('mouseleave',()=>{if(!isH)resetH();});
+  });
+  document.addEventListener('mouseleave',()=>{dot.style.opacity='0';ring.style.opacity='0';});
+  document.addEventListener('mouseenter',()=>{dot.style.opacity='1';ring.style.opacity='1';});
+})();
+</script>
 
-        const particles = [];
-        const count = Math.min(Math.floor(width / 22), 55);
-
-        for (let i = 0; i < count; i++) {
-          particles.push({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 0.4,
-            vy: (Math.random() - 0.5) * 0.4,
-            r: Math.random() * 1.5 + 0.8,
-          });
-        }
-
-        window.addEventListener('resize', () => {
-          width = canvas.width = window.innerWidth;
-          height = canvas.height = window.innerHeight;
-        });
-
-        function animateMesh() {
-          ctx.clearRect(0, 0, width, height);
-
-          for (let i = 0; i < particles.length; i++) {
-            const p = particles[i];
-            p.x += p.vx;
-            p.y += p.vy;
-
-            if (p.x < 0) p.x = width;
-            if (p.x > width) p.x = 0;
-            if (p.y < 0) p.y = height;
-            if (p.y > height) p.y = 0;
-
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fill();
-
-            for (let j = i + 1; j < particles.length; j++) {
-              const p2 = particles[j];
-              const dx = p.x - p2.x;
-              const dy = p.y - p2.y;
-              const dist = Math.sqrt(dx * dx + dy * dy);
-
-              if (dist < 130) {
-                ctx.strokeStyle = `rgba(255, 255, 255, ${0.12 * (1 - dist / 130)})`;
-                ctx.lineWidth = 0.8;
-                ctx.beginPath();
-                ctx.moveTo(p.x, p.y);
-                ctx.lineTo(p2.x, p2.y);
-                ctx.stroke();
-              }
-            }
-          }
-          requestAnimationFrame(animateMesh);
-        }
-        animateMesh();
-      }
-
-      // 2. LIVE ASCII SIMULATION & TOKEN STREAM TICKER
-      const asciiCanvas = document.getElementById('ascii-neural-canvas');
-      const asciiClock = document.getElementById('ascii-clock');
-      const tokenCounter = document.getElementById('token-rate-counter');
-      const streamLog = document.getElementById('terminal-stream-log');
-      const injectBtn = document.getElementById('toggle-stream-btn');
-
-      const patterns = [
+<!-- ══ ASCII LIVE + INTERACTIVE TERMINAL + UTILS ══ -->
+<script>
+// ASCII animation (from portfolio.html)
+const asciiPatterns=[
 `      [INPUT TOKENS]
          │     │     │
        ┌─┴─┐ ┌─┴─┐ ┌─┴─┐      ┌─── STATE GRAPH ───┐
@@ -1244,7 +837,7 @@ animate();
        ┌─┴─┐ ┌─┴─┐ ┌─┴─┐      ┌─── STATE GRAPH ───┐
   Q:   [███] [░░░] [▒▒▒]  ──▶ │ LangGraph Node: 02│
   K:   [░░░] [▒▒▒] [███]  ──▶ │ Recursive Tool-Call│
-  V:   [▒▒▒] [███] [░░░]  ──▶ │ Cross-Attention H4│
+  V:   [▒▒▒] [███] [░░░]  ──▶ │ Cross-Attn Head 4 │
        └───┬─┴───┬─┴───┘      └───────────────────┘
            │     │                     │
            ▼     ▼                     ▼
@@ -1261,150 +854,106 @@ animate();
            ▼     ▼                     ▼
       [TENSOR EMBEDDING: dim=4096, sparsity=0.02]
       [██████████████████░░░░]  84.1% Compressed`
-      ];
-
-      let frameIdx = 0;
-      if (asciiCanvas) {
-        setInterval(() => {
-          frameIdx = (frameIdx + 1) % patterns.length;
-          asciiCanvas.textContent = patterns[frameIdx];
-        }, 2200);
-      }
-
-      const sampleEvents = [
-        '<span class="text-primary font-medium">[INFERENCE]</span> Token stream batch: 64 tokens flushed in 12ms',
-        '<span class="text-on-surface">[FASTAPI]</span> POST /v1/chat/completions HTTP/1.1 200 OK',
-        '<span class="text-on-surface-variant">[AGENT]</span> LangGraph cycle verified: state convergence reached',
-        '<span class="text-primary font-semibold">[GROQ]</span> LPUs running optimal; thermal head 48°C',
-        '<span class="text-on-surface-variant">[VECTOR]</span> Cosine similarity index 0.942 on domain query'
-      ];
-
-      function appendLog(text) {
-        if (!streamLog) return;
-        const p = document.createElement('p');
-        p.className = 'text-xs transition-opacity duration-300';
-        p.innerHTML = text;
-        streamLog.appendChild(p);
-        if (streamLog.childNodes.length > 7) {
-          streamLog.removeChild(streamLog.firstChild);
-        }
-        streamLog.scrollTop = streamLog.scrollHeight;
-      }
-
-      let sampleEventIdx = 0;
-      if (injectBtn) {
-        injectBtn.addEventListener('click', () => {
-          appendLog(sampleEvents[sampleEventIdx % sampleEvents.length]);
-          sampleEventIdx++;
-        });
-      }
-
-      // 3. INTERACTIVE TERMINAL COPY & COMMAND HANDLER
-      const copyBtn = document.getElementById('copy-email-btn');
-      const copyStatus = document.getElementById('copy-status');
-      const copyIcon = document.getElementById('copy-icon');
-      const emailText = document.getElementById('contact-email');
-
-      if (copyBtn && emailText) {
-        copyBtn.addEventListener('click', () => {
-          navigator.clipboard.writeText(emailText.innerText.trim()).then(() => {
-            copyStatus.innerText = 'copied!';
-            copyIcon.innerText = 'check';
-            setTimeout(() => {
-              copyStatus.innerText = 'copy';
-              copyIcon.innerText = 'content_copy';
-            }, 2500);
-          });
-        });
-      }
-
-      const termInput = document.getElementById('terminal-input');
-      const termScreen = document.getElementById('terminal-screen');
-
-      if (termInput && termScreen) {
-        termInput.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter') {
-            const val = termInput.value.trim().toLowerCase();
-            termInput.value = '';
-
-            const response = document.createElement('div');
-            response.className = 'space-y-1';
-
-            if (val === 'clear') {
-              termScreen.innerHTML = '';
-              return;
-            } else if (val === 'whoami') {
-              response.innerHTML = `<span class="text-on-surface-variant">jks@ml-node-01:~$</span> <span class="text-primary">whoami</span>
-              <p class="text-on-surface pl-2">&gt; Jitendra Kumar Saini &bull; AI/ML Systems Engineer &amp; LLM Architect</p>`;
-            } else if (val === 'location') {
-              response.innerHTML = `<span class="text-on-surface-variant">jks@ml-node-01:~$</span> <span class="text-primary">location</span>
-              <p class="text-on-surface pl-2">&gt; Jaipur, Rajasthan, India [Ready to Relocate / Remote Active]</p>`;
-            } else if (val === 'email') {
-              response.innerHTML = `<span class="text-on-surface-variant">jks@ml-node-01:~$</span> <span class="text-primary">email</span>
-              <p class="text-on-surface pl-2">&gt; Jitendra205saini@gmail.com</p>`;
-            } else if (val === 'skills' || val === 'stack') {
-              response.innerHTML = `<span class="text-on-surface-variant">jks@ml-node-01:~$</span> <span class="text-primary">${val}</span>
-              <p class="text-on-surface-variant pl-2">&gt; Python, LangGraph, Groq, TensorFlow, OpenCV, FastAPI, MySQL, C/C++</p>`;
-            } else if (val === 'github') {
-              response.innerHTML = `<span class="text-on-surface-variant">jks@ml-node-01:~$</span> <span class="text-primary">github</span>
-              <p class="text-on-surface pl-2">&gt; Opening repository index...</p>`;
-              window.open('https://github.com/jitendra205saini', '_blank');
-            } else if (val === 'help') {
-              response.innerHTML = `<span class="text-on-surface-variant">jks@ml-node-01:~$</span> <span class="text-primary">help</span>
-              <p class="text-on-surface-variant pl-2">&gt; Commands: whoami, location, email, skills, github, clear</p>`;
-            } else {
-              response.innerHTML = `<span class="text-on-surface-variant">jks@ml-node-01:~$</span> <span class="text-primary">${val}</span>
-              <p class="text-on-surface-variant pl-2">&gt; command not found: ${val}. Type 'help' for options.</p>`;
-            }
-
-            termScreen.appendChild(response);
-            termScreen.scrollTop = termScreen.scrollHeight;
-          }
-        });
-      }
-
-    })();
-  </script>
-</div></main><footer class="w-full bg-surface-container-lowest mt-section-gap border-t border-white/[0.06]"><div class="max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop py-card-padding-lg flex flex-col md:flex-row items-center justify-between gap-6"><div class="flex flex-col sm:flex-row items-center gap-3"><span class="font-code-sm text-code-sm text-on-surface">JKS@ML-NODE:~#</span><span class="font-code-sm text-code-sm text-on-surface-variant">© 2025 Jitendra Kumar Saini. Scalable Inference &amp; Neural Hardware.</span></div><div class="flex items-center gap-6"><a class="font-code-sm text-code-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="architecture" href="#architecture">Sys_Arch</a><a class="font-code-sm text-code-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="featured-projects" href="#featured-projects">Repositories</a><a class="font-code-sm text-code-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact" href="#contact">Terminal_Ping</a></div></div></footer><script>(function(){
-const dot=document.getElementById('custom-cursor-dot');
-const glow=document.getElementById('custom-cursor-glow');
-if(!dot||!glow)return;
-
-const DEFAULT_GLOW='radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 70%)';
-const DEFAULT_DOT='#ffffff';
-
-let mouseX=window.innerWidth/2,mouseY=window.innerHeight/2;
-let glowX=mouseX,glowY=mouseY;
-
-window.addEventListener('mousemove',function(e){
-  mouseX=e.clientX;mouseY=e.clientY;
-  dot.style.transform=`translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
-});
-
-function renderGlow(){
-  glowX+=(mouseX-glowX)*0.18;
-  glowY+=(mouseY-glowY)*0.18;
-  glow.style.transform=`translate(${glowX}px, ${glowY}px) translate(-50%, -50%)`;
-  requestAnimationFrame(renderGlow);
+];
+let frameIdx=0;
+const asciiEl=document.getElementById('ascii-canvas');
+const frameIdEl=document.getElementById('ascii-frame-id');
+const tokenRateEl=document.getElementById('token-rate');
+const evalLossEl=document.getElementById('eval-loss');
+if(asciiEl){
+  asciiEl.textContent=asciiPatterns[0];
+  setInterval(()=>{
+    frameIdx=(frameIdx+1)%asciiPatterns.length;
+    asciiEl.textContent=asciiPatterns[frameIdx];
+    frameIdEl.textContent='FRAME: '+String(Math.floor(Math.random()*9000+1000)).padStart(4,'0');
+    tokenRateEl.textContent=(460+Math.floor(Math.random()*60))+' t/s';
+    evalLossEl.textContent=(0.01+Math.random()*0.008).toFixed(4);
+  },2200);
 }
-requestAnimationFrame(renderGlow);
 
-const interactives=document.querySelectorAll('a, button, [data-path]');
-interactives.forEach(el=>{
-  const auraColor=el.getAttribute('data-color');
-  el.addEventListener('mouseenter',()=>{
-    glow.style.width='64px';
-    glow.style.height='64px';
-    glow.style.background=auraColor
-      ? `radial-gradient(circle, ${auraColor}44 0%, rgba(255,255,255,0) 75%)`
-      : 'radial-gradient(circle, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0) 75%)';
-    dot.style.backgroundColor=auraColor||DEFAULT_DOT;
+// Stream log
+const streamLog=document.getElementById('stream-log');
+const injectBtn=document.getElementById('inject-btn');
+const streamEvents=[
+  '<span style="color:#F8F8F8;font-weight:600;">[INFERENCE]</span> Token batch: 64 tokens flushed in 11ms',
+  '<span style="color:#F8F8F8;">[FASTAPI]</span> POST /v1/chat/completions 200 OK',
+  '<span style="color:#AAAAAA;">[AGENT]</span> LangGraph cycle verified: state convergence reached',
+  '<span style="color:#4ADE80;font-weight:600;">[GROQ]</span> LPUs optimal; thermal 48°C stable',
+  '<span style="color:#AAAAAA;">[VECTOR]</span> Cosine similarity 0.942 on domain query',
+  '<span style="color:#F8F8F8;">[KERNEL]</span> Initializing stateful AgentExecutor pipeline',
+];
+// seed initial lines
+if(streamLog){
+  ['<span style="color:#F8F8F8;font-weight:600;">[KERNEL]</span> Initializing state machine &lt;LangGraph&gt;',
+   '<span style="color:#AAAAAA;">[AGENT]</span> Query dispatched to retrieval index (Top-k: 5)',
+   '<span style="color:#4ADE80;">[INFERENCE]</span> Token stream: Generating response...',
+   '<span style="color:#F8F8F8;">[PROD]</span> 200 OK — Model serving healthy.'
+  ].forEach(t=>{const p=document.createElement('p');p.innerHTML=t;streamLog.appendChild(p);});
+}
+let sIdx=0;
+function injectLine(){
+  const p=document.createElement('p');
+  p.innerHTML=streamEvents[sIdx%streamEvents.length];
+  sIdx++;
+  streamLog.appendChild(p);
+  if(streamLog.children.length>7)streamLog.removeChild(streamLog.firstChild);
+}
+if(streamLog){
+  // Auto-run every 2.5s
+  setInterval(injectLine, 2500);
+}
+if(injectBtn&&streamLog){
+  // Manual inject still works
+  injectBtn.addEventListener('click',()=>{injectLine();});
+}
+
+// Interactive terminal
+const termScreen=document.getElementById('term-screen');
+const termInput=document.getElementById('term-input');
+const COMMANDS={
+  whoami:'> Jitendra Kumar Saini • AI/ML Systems Engineer & LLM Architect',
+  skills:'> Python, LangGraph, LangChain, Groq, TensorFlow, OpenCV, FastAPI, MySQL, C/C++',
+  stack:'> Python, LangGraph, LangChain, Groq, TensorFlow, OpenCV, FastAPI, MySQL, C/C++',
+  location:'> Jaipur, Rajasthan, India [Open to Relocate / Remote Active]',
+  email:'> Jitendra205saini@gmail.com',
+  education:'> B.Tech AI & DS | Arya College | RTU | CGPA: 8.0/10 | 2022-2026',
+  experience:'> AI Developer Intern @ AbyM Technology (Jul-Sep 2025) | 3+ models deployed, 500+ req/day',
+  github:'> Opening repository index...',
+  linkedin:'> Opening LinkedIn profile...',
+  help:'> Commands: whoami, skills, location, email, education, experience, github, linkedin, clear',
+  clear:null,
+};
+if(termInput&&termScreen){
+  termInput.addEventListener('keydown',e=>{
+    if(e.key!=='Enter')return;
+    const val=termInput.value.trim().toLowerCase();
+    termInput.value='';
+    if(!val)return;
+    const div=document.createElement('div');
+    if(val==='clear'){termScreen.innerHTML='';return;}
+    const resp=COMMANDS[val]||`> command not found: ${val}. Type 'help'`;
+    div.innerHTML=`<span style="color:#555">jks@ml-node-01:~$</span> <span style="color:#F8F8F8;">${val}</span><br><span style="color:#4ADE80;">${resp}</span>`;
+    termScreen.appendChild(div);
+    termScreen.scrollTop=termScreen.scrollHeight;
+    if(val==='github')window.open('https://github.com/jitendra205saini','_blank');
+    if(val==='linkedin')window.open('https://linkedin.com/in/jitendarkumarsaini25/','_blank');
   });
-  el.addEventListener('mouseleave',()=>{
-    glow.style.width='36px';
-    glow.style.height='36px';
-    glow.style.background=DEFAULT_GLOW;
-    dot.style.backgroundColor=DEFAULT_DOT;
+}
+
+// Email copy
+function copyEmail(){
+  navigator.clipboard.writeText('Jitendra205saini@gmail.com').then(()=>{
+    const c=document.getElementById('copy-ok');c.style.display='inline';
+    setTimeout(()=>c.style.display='none',2500);
   });
-});
-})();</script></body></html>
+}
+
+// Mobile nav
+function toggleMob(){document.getElementById('mobNav').classList.toggle('open');}
+
+// Scroll reveal
+const rv=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>rv.observe(el));
+</script>
+</body>
+</html>
